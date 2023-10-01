@@ -64,11 +64,11 @@ QBShared.Jobs = {
         },
 	},
 
-    ['troopers'] = {
+    ['sast'] = {
 		label = 'State Troopers',
 		defaultDuty = false,
         description = 'State Troopers.',
-        isWhitelisted = true,
+        offDutyPay = false,
 		grades = {
 			['0'] = {
                 name = 'Trooper',

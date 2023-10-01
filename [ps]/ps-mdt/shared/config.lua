@@ -54,7 +54,7 @@ Config.PoliceJobs = {
     ['police'] = true,
     ['lspd'] = true,
     ['bcso'] = true,
-    ['troopers'] = true,
+    ['sast'] = true,
     ['sasp'] = true,
     ['doc'] = true,
     ['lssd'] = true,
@@ -99,7 +99,7 @@ Config.LogPerms = {
     ['bcso'] = {
 		[4] = true,
 	},
-    ['troopers'] = {
+    ['sast'] = {
 		[4] = true,
 	},
     ['sasp'] = {
@@ -126,7 +126,7 @@ Config.RemoveIncidentPerms = {
     ['bcso'] = {
 		[4] = true,
 	},
-    ['troopers'] = {
+    ['sast'] = {
 		[4] = true,
 	},
     ['sasp'] = {
@@ -153,7 +153,7 @@ Config.RemoveReportPerms = {
     ['bcso'] = {
 		[4] = true,
 	},
-    ['troopers'] = {
+    ['sast'] = {
 		[4] = true,
 	},
     ['sasp'] = {
@@ -180,7 +180,7 @@ Config.RemoveWeaponsPerms = {
     ['bcso'] = {
 		[4] = true,
 	},
-    ['troopers'] = {
+    ['sast'] = {
 		[4] = true,
 	},
     ['sasp'] = {
