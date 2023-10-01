@@ -27,3 +27,4 @@ ADD UNIQUE INDEX UK_playervehicles_plate (plate);
 ALTER TABLE `player_vehicles`
 ADD CONSTRAINT FK_playervehicles_players FOREIGN KEY (citizenid)
 REFERENCES `players` (citizenid) ON DELETE CASCADE ON UPDATE CASCADE;
+players

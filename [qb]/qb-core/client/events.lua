@@ -129,6 +129,7 @@ RegisterNetEvent('QBCore:Command:SpawnVehicle', function(vehName)
     end
 
     if IsPedInAnyVehicle(ped) then
+        SetEntityAsMissionEntity(veh, true, true)
         DeleteVehicle(veh)
     end
 
@@ -260,4 +261,8 @@ RegisterNetEvent('QBCore:Client:OnSharedUpdateMultiple', function(tableName, val
         QBCore.Shared[tableName][key] = value
     end
     TriggerEvent('QBCore:Client:UpdateObject')
+end)
+
+RegisterNetEvent('QBCore:Client:SharedUpdate', function(table)
+    QBCore.Shared = table
 end)

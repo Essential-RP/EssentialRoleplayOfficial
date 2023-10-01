@@ -48,10 +48,10 @@ Config.Styles = {
     label = 'Femme',
     value = 'move_f@femme@'
   },
-  ["13"] = {
-    label = 'Flee',
-    value = 'move_f@flee@a'
-  },
+  -- ["13"] = {
+  --   label = 'Flee',
+  --   value = 'move_f@flee@a'
+  -- },
   ["14"] = {
     label = 'Gangster',
     value = 'move_m@gangster@generic'

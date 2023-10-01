@@ -45,7 +45,7 @@ Config = {
 	},
 	Harness = {
 		HarnessControl = true,		-- Enable harness AND seatbelt features of the script, requires edits to smallresources and hud scripts
-		seatbeltEasyLeave = true,	-- if true players can exit vehicled before removing seatbelt
+		seatbeltEasyLeave = false,	-- if true players can exit vehicled before removing seatbelt
 		harnessEasyLeave = true,	-- if true players can exit vehicled before removing harness
 		progOff = true,				-- if true add a progressBar to unbuckle harness
 
@@ -133,7 +133,7 @@ Config = {
 									-- Lowering this will most likely add load on to the server database
 	},
 	Odometer = {
-		ShowOdo = true, 			-- Wether the distance is showed in car by default
+		ShowOdo = false, 			-- Wether the distance is showed in car by default
 		OdoLocation  = "bottom-right", 	-- Where the Odometer will show,
 										-- "left", "right", "top", "top-left", "top-right", "bottom", "bottom-left", "bottom-right"
 		OdoShowIcons = true, 		-- Enable this to allow the use of the warning icons on the odometer
@@ -152,7 +152,7 @@ Config = {
 		},
 	},
 	Emergency = {
-		requireDutyCheck = false,	-- if true, when a mechanic is online, the repair button won't show
+		requireDutyCheck = true,	-- if true, when a mechanic is online, the repair button won't show
 									-- if false, the repair option will always be available
 		Jobs = {
 			["police"] = 0, -- Job and Job Grade

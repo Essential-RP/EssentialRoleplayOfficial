@@ -5,7 +5,7 @@ Config.DoorList['Police MRPD-cell #1'] = {
     fixText = false,
     objYaw = 0.0,
     distance = 1,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     locked = true,
     objCoords = vec3(477.912598, -1012.188660, 26.480055),
     doorRate = 1.0,
@@ -18,7 +18,7 @@ Config.DoorList['Police MRPD-cell #2'] = {
     fixText = false,
     objYaw = 0.0,
     distance = 1,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     locked = true,
     objCoords = vec3(480.912811, -1012.188660, 26.480055),
     doorRate = 1.0,
@@ -31,7 +31,7 @@ Config.DoorList['Police MRPD-cell #3'] = {
     fixText = false,
     objYaw = 0.0,
     distance = 1,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     locked = true,
     objCoords = vec3(483.912720, -1012.188660, 26.480055),
     doorRate = 1.0,
@@ -44,7 +44,7 @@ Config.DoorList['Police MRPD-cell #4'] = {
     fixText = false,
     objYaw = 0.0,
     distance = 1,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     locked = true,
     objCoords = vec3(486.913116, -1012.188660, 26.480055),
     doorRate = 1.0,
@@ -59,7 +59,7 @@ Config.DoorList['Police MRPD-cell #5'] = {
     doorType = 'door',
     objName = -53345114,
     objYaw = 180.00001525879,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     fixText = false,
     distance = 1,
     objCoords = vec3(484.176422, -1007.734375, 26.480055),
@@ -71,7 +71,7 @@ Config.DoorList['Police MRPD-lawyer cell exit'] = {
     doorRate = 1.0,
     objName = -53345114,
     objCoords = vec3(481.008362, -1004.117981, 26.480055),
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     fixText = false,
     objYaw = 180.00001525879,
     distance = 1,
@@ -80,7 +80,7 @@ Config.DoorList['Police MRPD-lawyer cell exit'] = {
 
 -- Interegation Main Door created by yax
 Config.DoorList['Police MRPD-Interegation Main Door'] = {
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     doorType = 'double',
     doors = {
         {objName = 149284793, objYaw = 180.00001525879, objCoords = vec3(482.068573, -997.909973, 26.406504)},
@@ -93,7 +93,7 @@ Config.DoorList['Police MRPD-Interegation Main Door'] = {
 
 -- Interegation Door 2 created by yax
 Config.DoorList['Police MRPD-Interegation Door 2'] = {
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     doorType = 'double',
     doors = {
         {objName = 149284793, objYaw = 89.999977111816, objCoords = vec3(479.062408, -987.437561, 26.405483)},
@@ -111,7 +111,7 @@ Config.DoorList['Police MRPD-EvidenceRoom'] = {
     objYaw = 134.97177124023,
     objCoords = vec3(475.832336, -990.483948, 26.405483),
     objName = -692649124,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     doorRate = 1.0,
     locked = true,
     fixText = false,
@@ -125,7 +125,7 @@ Config.DoorList['Police MRPD-Evidence and Identification Door'] = {
         {objName = -1406685646, objYaw = 270.00003051758, objCoords = vec3(471.375305, -985.031921, 26.405483)}
     },
     doorType = 'double',
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     distance = 2,
     doorRate = 1.0,
 }
@@ -138,7 +138,7 @@ Config.DoorList['Police MRPD-Garage To Jail Cells Main Door'] = {
         {objName = -288803980, objYaw = 180.00001525879, objCoords = vec3(469.927368, -1000.543701, 26.405483)}
     },
     doorType = 'double',
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     distance = 2,
     doorRate = 1.0,
 }
@@ -150,7 +150,7 @@ Config.DoorList['Police MRPD-Parking Garage Door 1'] = {
     objYaw = 89.870010375977,
     fixText = false,
     objCoords = vec3(464.156555, -997.509277, 26.370705),
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     distance = 2,
     objName = 1830360419,
     doorRate = 1.0,
@@ -165,14 +165,14 @@ Config.DoorList['Police MRPD-Outback Impound Area'] = {
     },
     locked = true,
     doorRate = 1.0,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     doorType = 'double',
 }
 
 -- Parking garage door 2 created by Rickey
 Config.DoorList['Police MRPD-Parking garage door 2'] = {
     doorRate = 1.0,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     objYaw = 269.79000854492,
     distance = 2,
     fixText = false,
@@ -185,7 +185,7 @@ Config.DoorList['Police MRPD-Parking garage door 2'] = {
 -- Enter Jailcells MAIN FRONT created by yax
 Config.DoorList['Police MRPD-Enter Jailcells MAIN FRONT'] = {
     doorRate = 1.0,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     objYaw = 270.13998413086,
     distance = 2,
     fixText = false,
@@ -198,7 +198,7 @@ Config.DoorList['Police MRPD-Enter Jailcells MAIN FRONT'] = {
 -- garage door 1 created by Rickey
 Config.DoorList['Police MRPD-garage door 1'] = {
     doorRate = 1.0,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     objYaw = 0.0,
     distance = 6,
     fixText = false,
@@ -217,14 +217,14 @@ Config.DoorList['Police MRPD-Processing,Mugshot,Cells'] = {
     },
     locked = true,
     doorRate = 1.0,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     doorType = 'double',
 }
 
 -- garage door 2 created by Rickey
 Config.DoorList['Police MRPD-garage door 2'] = {
     doorRate = 1.0,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     objYaw = 0.0,
     distance = 6,
     fixText = false,
@@ -243,7 +243,7 @@ Config.DoorList['Police MRPD-Door 69'] = {
     },
     distance = 2,
     doorType = 'double',
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     doorRate = 1.0,
 }
 
@@ -256,7 +256,7 @@ Config.DoorList['Police MRPD-lobby door 1'] = {
     objName = -96679321,
     distance = 2,
     doorType = 'door',
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     fixText = false,
 }
 
@@ -269,7 +269,7 @@ Config.DoorList['Police MRPD-lobby door 2'] = {
     objName = -1406685646,
     distance = 2,
     doorType = 'door',
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     fixText = false,
 }
 
@@ -281,7 +281,7 @@ Config.DoorList['Police MRPD-Captain Room'] = {
     distance = 2,
     objCoords = vec3(458.654327, -990.649780, 30.823193),
     objName = -96679321,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     objYaw = 270.00003051758,
     doorRate = 1.0,
 }
@@ -294,7 +294,7 @@ Config.DoorList['Police MRPD-Side door 2'] = {
     },
     doorRate = 1.0,
     locked = true,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     doorType = 'double',
     distance = 2,
 }
@@ -307,7 +307,7 @@ Config.DoorList['Police MRPD-MCD'] = {
     },
     doorRate = 1.0,
     locked = true,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     doorType = 'double',
     distance = 2,
 }
@@ -320,7 +320,7 @@ Config.DoorList['Police MRPD-Heli Pad'] = {
     distance = 2,
     objCoords = vec3(464.308563, -984.528442, 43.771240),
     objName = -692649124,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     objYaw = 89.999977111816,
     doorRate = 1.0,
 }
@@ -333,7 +333,7 @@ Config.DoorList['Police MRPD-Labortory'] = {
     },
     doorRate = 1.0,
     locked = true,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     doorType = 'double',
     distance = 2,
 }
@@ -346,7 +346,7 @@ Config.DoorList['Police MRPD-armory door 2'] = {
     distance = 2,
     objCoords = vec3(487.437836, -1000.189270, 30.786972),
     objName = -692649124,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     objYaw = 181.28001403809,
     doorRate = 1.0,
 }
@@ -359,7 +359,7 @@ Config.DoorList['Police MRPD-Armory door 1'] = {
     distance = 2,
     objCoords = vec3(479.750732, -999.629028, 30.789167),
     objName = -692649124,
-    authorizedJobs = { ['police'] = 0 },
+       authorizedJobs = { ['sast'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['troopers'] = 0 },
     objYaw = 89.999977111816,
     doorRate = 1.0,
 }

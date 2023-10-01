@@ -127,7 +127,7 @@ body {
 }
 
 #sound-on:active {
-    background-color: #018CEC;
+    background-color: #8b8b8b;
 }
 
 .cast-icon {
@@ -388,8 +388,8 @@ body.light{
     -webkit-appearance: none;
     width: 10px;
     height: 40px;
-    background: #2294FD;
-    box-shadow: -200px 0 0 200px #2294FD;
+    background: #777777;
+    box-shadow: -200px 0 0 200px #ffffff;
     border-radius: 1vw;
 }
 

@@ -292,7 +292,7 @@ Config.BoxZones = {
                     ["police"] = 0,
                     ["bcso"] = 0,
                     ["rangers"] = 0,
-                    ["troopers"] = 0,
+                    ["sast"] = 0,
                     ["corrections"] = 0,
                 }
             },
@@ -317,7 +317,7 @@ Config.BoxZones = {
                     ["police"] = 0,
                     ["bcso"] = 0,
                     ["rangers"] = 0,
-                    ["troopers"] = 0,
+                    ["sast"] = 0,
                     ["corrections"] = 0,
                 }
             },

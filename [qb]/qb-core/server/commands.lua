@@ -146,29 +146,6 @@ QBCore.Commands.Add('removepermission', Lang:t("command.removepermission.help"),
     end
 end, 'god')
 
--- QBCore.Commands.Add("rep", "Check your crafting reputation.", {}, false, function(source, args)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
-
---     if Player then
---         local repValue = Player.PlayerData.metadata['craftingrep'] or 0
--- 		local garbagevalue = Player.PlayerData.metadata['garbage'] or 0
---         -- print('Crafting Reputation: ' .. repValue) -- Add this line for debugging
---         TriggerClientEvent('QBCore:Notify', src, 'Crafting Reputation: ' .. repValue, 'primary')
--- 		TriggerClientEvent('QBCore:Notify', src, 'Garbage Reputation: ' .. garbagevalue, 'primary')
---     end
--- end, "user")
-
--- QBCore.Commands.Add("rep", "Check your crafting reputation.", {}, false, function(source, args)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
-
---     if Player then
---         local repValue = Player.PlayerData.metadata['craftingrep'] or 0
---         QBCore.Functions.Notify('Crafting Reputation: ' .. repValue, 'success')
---     end
--- end, "user")
-
 -- Open & Close Server
 
 QBCore.Commands.Add('openserver', Lang:t("command.openserver.help"), {}, false, function(source)
@@ -267,7 +244,6 @@ QBCore.Commands.Add('setgang', Lang:t("command.setgang.help"), { { name = Lang:t
 end, 'admin')
 
 -- Out of Character Chat
-
 QBCore.Commands.Add('ooc', Lang:t("command.ooc.help"), {}, false, function(source, args)
     local message = table.concat(args, ' ')
     local Players = QBCore.Functions.GetPlayers()
@@ -276,22 +252,22 @@ QBCore.Commands.Add('ooc', Lang:t("command.ooc.help"), {}, false, function(sourc
     for _, v in pairs(Players) do
         if v == source then
             TriggerClientEvent('chat:addMessage', v, {
-                color = { 0, 0, 255},
+                color = QBConfig.Commands.OOCColor,
                 multiline = true,
                 args = {'OOC | '.. GetPlayerName(source), message}
             })
         elseif #(playerCoords - GetEntityCoords(GetPlayerPed(v))) < 20.0 then
             TriggerClientEvent('chat:addMessage', v, {
-                color = { 0, 0, 255},
+                color = QBConfig.Commands.OOCColor,
                 multiline = true,
                 args = {'OOC | '.. GetPlayerName(source), message}
             })
         elseif QBCore.Functions.HasPermission(v, 'admin') then
             if QBCore.Functions.IsOptin(v) then
                 TriggerClientEvent('chat:addMessage', v, {
-                    color = { 0, 0, 255},
+                    color = QBConfig.Commands.OOCColor,
                     multiline = true,
-                    args = {'Proxmity OOC | '.. GetPlayerName(source), message}
+                    args = {'Proximity OOC | '.. GetPlayerName(source), message}
                 })
                 TriggerEvent('qb-log:server:CreateLog', 'ooc', 'OOC', 'white', '**' .. GetPlayerName(source) .. '** (CitizenID: ' .. Player.PlayerData.citizenid .. ' | ID: ' .. source .. ') **Message:** ' .. message, false)
             end
