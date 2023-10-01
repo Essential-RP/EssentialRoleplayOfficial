@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="money.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.1.0/dist/quasar.umd.prod.js" defer></script>
+    <script src="money.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div id="main-container">
+        <div id="money-container">
+            <div id="money-cash">
+                <transition name="slide-fade">
+                    <p v-if="showCash"><span id="sign">$&nbsp;</span><span id="money">{{ cash }}</span></p>
+                </transition>
+            </div>
+            <div id="money-bank">
+                <transition name="slide-fade">
+                    <p v-if="showBank">
+                        <svg id="bank-icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                            <!-- Font Awesome Credit Card Icon -->
+                            <path d="M64 32C28.7 32 0 60.7 0 96v32H576V96c0-35.3-28.7-64-64-64H64zM576 224H0V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V224zM112 352h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm112 16c0-8.8 7.2-16 16-16H368c8.8 0 16 7.2 16 16s-7.2 16-16 16H240c-8.8 0-16-7.2-16-16z"/>
+                        </svg>
+                        <span id="money">{{ bank }}</span>
+                    </p>
+                </transition>
+            </div>                                                
+            <div id="money-change" v-if="showUpdate">
+                <p v-if="plus" id="money"><span id="plus">+&nbsp;</span><span id="money">{{ amount }}</span></p>
+                <p v-else-if="minus" id="money"><span id="minus">-&nbsp;</span><span id="money">{{ amount }}</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Luckiest+Guy&family=Orbitron:wght@600&family=Oswald&family=Phudu:wght@700&display=swap');
+
+
+#container {
+    display: none;
+}
+
+/* .xhair-container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.xhair {
+    border-radius: 100%;
+    border: 2px solid black;
+    width: 4px;
+    height: 4px;
+    background-color: white;
+} */
+
+.ammo-container {
+    margin-top: 27px;
+    margin-right: 10px;
+    text-align: right;
+    font-size: 25px;
+}
+
+.ammo-count {
+    font-family: 'Orbitron', sans-serif;
+    color: rgb(255, 255, 255);
+    display: inline;
+    text-shadow: -2px -2px 4px black, 2px -2px 4px black, -2px 2px 4px black, 2px 2px 4px black;
+}
+.ammo-max {
+    font-family: 'Orbitron', sans-serif;
+    color: rgb(255, 255, 255);
+    display: inline;
+    text-shadow: -2px -2px 4px black, 2px -2px 4px black, -2px 2px 4px black, 2px 2px 4px black;
+}
+
+/*
+.image-container {
+    text-align: right;
+}
+*/
+
+/*
+.custom-ammo-image {
+    width: 100px;
+    height: auto;
+    margin-left: 1660px;
+    margin-top: -60px;
+    margin-bottom: 18px;
+}
+*/

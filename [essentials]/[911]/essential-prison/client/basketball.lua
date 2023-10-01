@@ -1,0 +1,278 @@
+-- local QBCore = exports[Config.CoreName]:GetCoreObject()
+-- local InBasketBallCourt = false
+-- local PrisionNet1 = vector3(1731.34, 2527.35, 45.77)
+-- local PrisionNet2 = vector3(1720.19, 2548.58, 45.90)
+
+-- local HoldingBall = false
+-- local shooting = false
+
+-- local function CreateActivityZones(zones, name)
+--     local zone = PolyZone:Create(zones['Zone']['Shape'], {  -- create the zone
+--         name= name,
+--         minZ = zones['minZ'],
+--         maxZ = zones['maxZ'],
+--         debugPoly = Config.Debug
+--     })
+--     zone:onPlayerInOut(function(isPointInside)
+--         if isPointInside then
+--             if zone.name == 'Prison1' then
+--                 InBasketBallCourt = true
+--                 TriggerEvent("Pug:BasketBall:StartLoop")
+--             end
+--         else
+--             if zone.name == 'Prison1' then
+--                 InBasketBallCourt = false
+--             end
+--         end
+--     end)
+-- end
+-- for k, v in pairs(Config.BasketBallCourts) do
+--     CreateActivityZones(v, k)
+-- end
+
+-- local function LoaadAnim(Anim)
+--     RequestAnimDict(Anim)
+--     while not HasAnimDictLoaded(Anim) do Wait(200) end
+-- end
+-- local function LoadModel(model)
+--     RequestModel(model)
+--     while not HasModelLoaded(model) do Wait(200) end
+-- end
+-- local function CreateAnimationBall()
+--     BallAnim = CreateObject(GetHashKey('prop_bskball_01'), GetEntityCoords(PlayerPedId()), true, true, false)
+--     AttachEntityToEntity(BallAnim, PlayerPedId(), GetPedBoneIndex(PlayerPedId(),  28422), 0.0600, 0.0400, -0.1200, 0.0, 0.0, 40.00, 1, 1, 0, 1, 0, 1)
+-- end
+-- local function HandleDunkingLogic()
+--     shooting = true
+--     HoldingBall = false
+--     TriggerEvent("DeleteBall100", BasketBall)
+--     LoadModel("prop_bskball_01")
+--     ClearPedTasksImmediately(PlayerPedId())
+--     TriggerEvent('Pug:BacketBall:Emote', 'anim@male_bskball_hold', 'bskball_hold_clip')
+-- end
+-- Citizen.CreateThread(function()
+--     LoadModel('prop_bskball_01')
+--     for _, v in pairs(Config.BasketBallLocations) do
+--         Ball = CreateObject(GetHashKey('prop_bskball_01'), v, false,false,false)
+--         SetEntityHeading(Ball, GetEntityHeading(Ball)-245)
+--         FreezeEntityPosition(Ball, true)
+--     end
+-- end)
+-- AddEventHandler("onResourceStop", function(resource)
+--     if resource == GetCurrentResourceName() then 
+--         if DoesEntityExist(Ball) then
+--             DeleteEntity(Ball)
+--         end
+--     end
+-- end)
+-- RegisterNetEvent("Pug:BasketBall:ReloadSkin", function()
+-- 	for k, v in pairs(GetGamePool('CObject')) do
+-- 		if IsEntityAttachedToEntity(PlayerPedId(), v) then
+-- 			SetEntityAsMissionEntity(v, true, true)
+-- 			DeleteObject(v)
+-- 			DeleteEntity(v)
+-- 		end
+-- 	end
+--     if Config.PugSlingScript then
+-- 	    TriggerEvent("Pug:ReloadGuns:sling")
+--     end
+-- end)
+-- RegisterNetEvent("Pug:BacketBall:Emote", function(EmoteAnim, Emote)
+--     LoaadAnim(EmoteAnim)
+--     TaskPlayAnim(PlayerPedId(), EmoteAnim, Emote, 2.0, 2.0, 1000, 51, 0, false, false, false)
+-- end)
+-- RegisterNetEvent("Pug:BasketBall:StartLoop", function()
+--     while InBasketBallCourt do
+--         Wait(5)
+--         if InBasketBallCourt then
+--             if not HoldingBall then
+--                 if IsControlJustPressed(0,38) and not HoldingBall then
+--                     local MyCoords = GetEntityCoords(PlayerPedId())
+--                     local BasketBall = GetClosestObjectOfType(MyCoords, 2.0, GetHashKey("prop_bskball_01"), false, false, false)
+--                     if not IsEntityAttachedToAnyPed(BasketBall) and #(MyCoords - GetEntityCoords(BasketBall)) <= 1.5 then -- #(GetEntityCoords(PlayerPedId()) - BallCoords) <= 1.5 and was there
+--                         if #(MyCoords - Config.BasketBallLocations[1]) >= 1.5 then
+--                             TriggerEvent("DeleteBall100", BasketBall)
+--                             HoldingBall = true
+--                             TriggerEvent("Pug:client:BaskitballAnimation")
+--                             TriggerEvent("Pug:client:DoBaskitballLogic")
+--                         end
+--                     end
+--                 end
+--             else
+--                 if IsControlJustPressed(0,38) and HoldingBall then
+--                     if #(PrisionNet1 - GetEntityCoords(PlayerPedId())) <= 2.6 then
+--                         HandleDunkingLogic()
+--                         CreateAnimationBall()
+--                         TriggerEvent("Pug:BasketBall:DoWaitToJump", PrisionNet1)
+--                         exports[Config.CircleMiniGameName]:Circle(function(success)
+--                             if success then
+--                                 Wait(200)
+--                                 SetEntityCoords(PlayerPedId(), PrisionNet1.x, PrisionNet1.y, PrisionNet1.z-2)
+--                                 BasketBall = CreateObject(GetHashKey('prop_bskball_01'), PrisionNet1, true, true, false)
+--                                 ApplyForceToEntity(BasketBall,0,0,0,0,false,true,true,false,true)
+--                             else
+--                                 BasketBall = CreateObject(GetHashKey('prop_bskball_01'), PrisionNet1.x-0.5, PrisionNet1.y-0.5, PrisionNet1.z, true, true, false)
+--                                 ApplyForceToEntity(BasketBall,3,vector3(2.0, -4.0, 19.0),0,0,false,true,true,false,true)
+--                             end
+--                         end, 1, 2)
+--                         TriggerEvent("Pug:BasketBall:ReloadSkin")
+--                         shooting = false
+--                     elseif #(PrisionNet2 - GetEntityCoords(PlayerPedId())) <= 2.6 then
+--                         HandleDunkingLogic()
+--                         CreateAnimationBall()
+--                         TriggerEvent("Pug:BasketBall:DoWaitToJump", PrisionNet2)
+--                         exports[Config.CircleMiniGameName]:Circle(function(success)
+--                             if success then
+--                                 Wait(200)
+--                                 SetEntityCoords(PlayerPedId(), PrisionNet2.x, PrisionNet2.y, PrisionNet2.z-2)
+--                                 BasketBall = CreateObject(GetHashKey('prop_bskball_01'), PrisionNet2, true, true, false)
+--                                 ApplyForceToEntity(BasketBall,3,vector3(-1.0, 1.0, 1.0),0,0,false,true,true,false,true)
+--                             else
+--                                 BasketBall = CreateObject(GetHashKey('prop_bskball_01'), PrisionNet2.x-0.5, PrisionNet2.y-0.5, PrisionNet2.z, true, true, false)
+--                                 ApplyForceToEntity(BasketBall,3,vector3(2.0, -10.0, 5.0),0,0,false,true,true,false,true)
+--                             end
+--                         end, 1, 2)
+--                         TriggerEvent("Pug:BasketBall:ReloadSkin")
+--                         shooting = false
+--                     else
+--                         HoldingBall = false
+--                         shooting = true
+--                         TriggerEvent("Pug:client:HandleBallINAirLogic")
+--                         TriggerEvent("DeleteBall100", BasketBall)
+--                         Wait(200)
+--                         local AimAt = PrisionNet1
+--                         local direction = vector3(-15.0, 20.0, 19.0)
+--                         if #(GetEntityCoords(PlayerPedId()) - PrisionNet1) <= 11 then
+--                             direction = vector3(15.0, -20.0, 19.0)
+--                         elseif #(GetEntityCoords(PlayerPedId()) - PrisionNet2) <= 11 then
+--                             AimAt = PrisionNet2
+--                         end
+--                         TriggerEvent('Pug:BacketBall:Emote', 'anim@male_bskball_hold', 'bskball_hold_clip')
+--                         Wait(200)
+--                         CreateAnimationBall()
+--                         Wait(400)
+--                         LoaadAnim("amb@prop_human_movie_bulb@exit")
+--                         TaskPlayAnim(PlayerPedId(), 'amb@prop_human_movie_bulb@exit', 'exit', 8.0, 8.0, -1, 32, 1, false, false, false)
+--                         TaskJump(PlayerPedId(), false)
+--                         TriggerEvent("DeleteBall100", BallAnim)
+--                         LoadModel("prop_bskball_01")
+--                         local coords = GetEntityCoords(PlayerPedId())
+--                         local heading = GetEntityHeading(PlayerPedId())
+--                         local forward = GetEntityForwardVector(PlayerPedId())
+--                         local x, y, z = table.unpack(coords + forward * 0.5)
+--                         BasketBall = CreateObject(GetHashKey('prop_bskball_01'), x, y, z, true, true, false)
+--                         Wait(100)
+--                         StopAnimTask(PlayerPedId(), "amb@prop_human_movie_bulb@exit", "exit", 1.0)
+--                         ApplyForceToEntity(BasketBall,3,direction,vector3(0.0, 10.0, 0.0),0,false,true,true,false,true)
+--                         Wait(2000)
+--                         shooting = false
+--                     end
+--                 end
+--             end
+--         else
+--             break
+--         end
+--     end
+-- end)
+-- RegisterCommand("yo", function()
+--     LoaadAnim("amb@prop_human_movie_bulb@exit")
+--     TaskPlayAnim(PlayerPedId(), 'amb@prop_human_movie_bulb@exit', 'exit', 8.0, 8.0, -1, 32, 1, false, false, false)
+--     -- ApplyForceToEntity(PlayerPedId(),3,vector3(-15.0, 20.0, 19.0),vector3(0.0, 10.0, 0.0),0,false,true,true,false,true)
+-- end)
+-- RegisterNetEvent("Pug:client:HandleBallINAirLogic", function()
+--     while shooting do
+--         Wait(1)
+--         local BasketBall = GetClosestObjectOfType(GetEntityCoords(PlayerPedId()), 12.0, GetHashKey("prop_bskball_01"), false, false, false)
+--         if #(PrisionNet1 - GetEntityCoords(BasketBall)) <= 0.45 then
+--             TriggerEvent("DeleteBall100", BasketBall)
+--             BasketBall = CreateObject(GetHashKey('prop_bskball_01'), PrisionNet1, true, true, false)
+--             ApplyForceToEntity(BasketBall,0,0,0,0,false,true,true,false,true)
+--             break
+--         elseif #(PrisionNet2 - GetEntityCoords(BasketBall)) <= 0.3 then
+--             TriggerEvent("DeleteBall100", BasketBall)
+--             BasketBall = CreateObject(GetHashKey('prop_bskball_01'), PrisionNet2, true, true, false)
+--             ApplyForceToEntity(BasketBall,0,0,0,0,false,true,true,false,true)
+--             break
+--         end
+--     end
+-- end)
+
+-- RegisterNetEvent("Pug:BasketBall:DoWaitToJump", function(loc)
+--     TaskGoToCoordAnyMeans(PlayerPedId(), loc, 1.0, 0, 0, 786603, 0xbf800000)
+--     Wait(500)
+--     TaskJump(PlayerPedId(), false)
+--     ApplyForceToEntity(PlayerPedId(),3,vector3(0.0, 0.0, 19.0),vector3(0.0, 10.0, 0.0),0,false,true,true,false,true)
+--     TriggerEvent("DeleteBall100", BallAnim)
+--     TriggerEvent('Pug:BacketBall:Emote', 'anim@male_bskball_photo_pose', 'photo_pose_clip')
+--     Wait(100)
+--     BallAnim = CreateObject(GetHashKey('prop_bskball_01'), GetEntityCoords(PlayerPedId()), true, true, false)
+--     AttachEntityToEntity(BallAnim, PlayerPedId(), GetPedBoneIndex(PlayerPedId(),  60309), 0.0600, 0.0400, -0.1200, 0.0, 0.0, 40.00, 1, 1, 0, 1, 0, 1)
+--     Wait(200)
+--     -- TriggerEvent("DeleteBall100", BallAnim)
+-- end)
+
+-- RegisterNetEvent("Pug:client:DoBaskitballLogic", function()
+--     RequestModel("prop_bskball_01")
+--     while not HasModelLoaded("prop_bskball_01") do Wait(200) end
+--     while HoldingBall do
+--         local coords = GetEntityCoords(PlayerPedId())
+--         local heading = GetEntityHeading(PlayerPedId())
+--         local forward = GetEntityForwardVector(PlayerPedId())
+--         local x, y, z = table.unpack(coords + forward * 0.3)
+--         BasketBall = CreateObject(GetHashKey('prop_bskball_01'), x, y, z, true, true, false)
+--         AttachEntityToEntity(BasketBall, PlayerPedId(), GetPedBoneIndex(PlayerPedId(),  57005), 0.13, 0.02, 0.0, -90.0, 0, 0, 1, 1, 0, 1, 0, 1)
+--         Wait(350)
+--         DetachEntity(BasketBall, 1, 1)
+--         if not shooting then
+--             ApplyForceToEntity(BasketBall,3,vector3(0.0, 0.0, -35.0),vector3(0.0, 0.0, 0.0),0,false,true,true,false,true)
+--         end
+--         Wait(150)
+--         if DoesEntityExist(BasketBall) then
+--             if not shooting then
+--                 DeleteEntity(BasketBall)
+--                 TriggerServerEvent("Pug:Server:UpdateBallPosition", GetEntityCoords(BasketBall), true)
+--             end
+--         end
+--     end
+-- end)
+-- RegisterNetEvent("Pug:client:BaskitballAnimation", function()
+--     LoaadAnim("missfbi4prepp1")
+--     while HoldingBall do
+--         Wait(700)
+--         if not shooting then
+--             TaskPlayAnim(PlayerPedId(), 'missfbi4prepp1', '_bag_throw_garbage_man', 8.0, 8.0, 1100, 48, 0.0, 0, 0, 0)
+--         else
+--             StopAnimTask(PlayerPedId(), "missfbi4prepp1", "_bag_throw_garbage_man", 1.0)
+--             break
+--         end
+--     end
+-- end)
+-- RegisterNetEvent("DeleteBall100", function(Ball)
+--     local entity = Ball
+--     local ped = PlayerPedId()
+--     NetworkRequestControlOfEntity(entity)
+--     local timeout = 2000
+--     while timeout > 0 and not NetworkHasControlOfEntity(entity) do
+--         Wait(100)
+--         timeout = timeout - 100
+--     end
+--     SetEntityAsMissionEntity(entity, true, true)
+--     local timeout = 2000
+--     while timeout > 0 and not IsEntityAMissionEntity(entity) do
+--         Wait(100)
+--         timeout = timeout - 100
+--     end
+--     Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(entity))
+--     if (DoesEntityExist(entity)) then 
+--         Citizen.Trace("Entity FAILED to delete! If you see this please contact a developer!")	
+--         DeleteEntity(entity)
+--         if ( DoesEntityExist( entity ) ) then 
+--             Citizen.Trace("Entity FAILED to delete on attempt 2! If you see this please contact a developer!")            
+--             return false
+--         else 
+--             return true
+--         end
+--     else 
+--         return true
+--     end 
+-- end)

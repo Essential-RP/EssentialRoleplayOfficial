@@ -1,0 +1,6 @@
+["bodycam"] 			         = {["name"] = "bodycam", 				        ["label"] = "BodyCam", 		["weight"] = 500, 		["type"] = "item", 		["image"] = "bodycam.png", ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   	["combinable"] = nil,   ["description"] = "Capture Live Events.."},
+
+
+INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES ('bodycam', 'Body Cam', 1, 0, 1) 
+
+Run the query for ESX or add to items.lua for QBCore
