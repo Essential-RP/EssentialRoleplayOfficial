@@ -48,7 +48,7 @@ Config.Locations = {
 
 Config.AuthorizedJobs = {
     LEO = { -- this is for job checks which should only return true for police officers
-        Jobs = {['police'] = true, ['fib'] = true, ['sheriff'] = true},
+        Jobs = {['police'] = true, ['sast'] = true, ['sheriff'] = true},
         Types = {['police'] = true, ['leo'] = true},
         Check = function(PlyData)
             PlyData = PlyData or QBCore.Functions.GetPlayerData()

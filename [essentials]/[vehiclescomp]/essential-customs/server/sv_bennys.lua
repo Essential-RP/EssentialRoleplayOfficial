@@ -49,7 +49,7 @@ RegisterNetEvent('qb-customs:server:attemptPurchase', function(type, upgradeLeve
         local customPrice = vehicleCustomisationPrices[type].prices[upgradeLevel]
         
         -- Check if the player's job is "police" and modify the price accordingly
-        if job == "police" then
+        if job == "police" or job == "troopers" then
             customPrice = vehicleCustomisationPricesPolice[type].prices[upgradeLevel]
         end
 
@@ -64,7 +64,7 @@ RegisterNetEvent('qb-customs:server:attemptPurchase', function(type, upgradeLeve
         local customPrice = vehicleCustomisationPrices[type].price
 
         -- Check if the player's job is "police" and modify the price accordingly
-        if job == "police" then
+        if job == "police" or job == "troopers" then
             customPrice = vehicleCustomisationPricesPolice[type].price
         end
 

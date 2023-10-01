@@ -410,7 +410,7 @@ finishPopulatingMenu("ResprayMenu")
 -- Create a function to check if the player is in the police job
 local function isPlayerPolice()
     local player = QBCore.Functions.GetPlayerData()
-    return player.job.name == "police"
+    return player.job.name == "police" or player.job.name == "troopers"
 end
 
 -- Create menus for respray types and colors

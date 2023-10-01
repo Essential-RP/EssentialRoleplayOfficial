@@ -75,7 +75,7 @@ QBShared.Jobs = {
                 payment = 1000
             },
             ['1'] = {
-                name = 'Trooper first class',
+                name = 'Senior Trooper',
                 payment = 1200
             },
             ['2'] = {
@@ -87,21 +87,9 @@ QBShared.Jobs = {
                 payment = 1500
             },
             ['4'] = {
-                name = 'Captain',
-                payment = 1600
-            },
-            ['5'] = {
-                name = 'Major',
-                payment = 1700
-            },
-            ['6'] = {
-                name = 'Lieutenant colonel',
-                payment = 1750
-            },
-            ['7'] = {
-                name = 'Colonel',
-                isboss = true,
+                name = 'Commissioner',
                 payment = 1800
+                isboss = true
             },
         },
 	},
