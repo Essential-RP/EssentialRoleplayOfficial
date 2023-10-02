@@ -19,7 +19,7 @@ Citizen.CreateThread(function()
         SetDiscordRichPresenceAssetSmallText('discord.gg/essentialrp')
 
         QBCore.Functions.TriggerCallback('smallresources:server:GetCurrentPlayers', function(result)
-            SetRichPresence('Players: '..result..'/10 Wandering LS')
+            SetRichPresence('Players: '..result..'/64 Wandering LS')
         end)
 
 
