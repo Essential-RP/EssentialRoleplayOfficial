@@ -657,7 +657,7 @@ RegisterNetEvent('police:server:CuffPlayer', function(playerId, isSoftcuff)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
     local Player = QBCore.Functions.GetPlayer(src)
     local CuffedPlayer = QBCore.Functions.GetPlayer(playerId)
@@ -672,7 +672,7 @@ RegisterNetEvent('police:server:EscortPlayer', function(playerId)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
     local Player = QBCore.Functions.GetPlayer(source)
     local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
@@ -691,7 +691,7 @@ RegisterNetEvent('police:server:KidnapPlayer', function(playerId)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
     local Player = QBCore.Functions.GetPlayer(source)
     local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
@@ -711,7 +711,7 @@ RegisterNetEvent('police:server:SetPlayerOutVehicle', function(playerId)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
     local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
     if not QBCore.Functions.GetPlayer(src) or not EscortPlayer then return end
@@ -729,7 +729,7 @@ RegisterNetEvent('police:server:PutPlayerInVehicle', function(playerId)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
     local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
     if not QBCore.Functions.GetPlayer(src) or not EscortPlayer then return end
@@ -747,7 +747,7 @@ RegisterNetEvent('police:server:BillPlayer', function(playerId, price)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
     local Player = QBCore.Functions.GetPlayer(src)
     local OtherPlayer = QBCore.Functions.GetPlayer(playerId)
@@ -764,7 +764,7 @@ RegisterNetEvent('police:server:JailPlayer', function(playerId, time)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
     local Player = QBCore.Functions.GetPlayer(src)
     local OtherPlayer = QBCore.Functions.GetPlayer(playerId)
@@ -827,7 +827,7 @@ RegisterNetEvent('police:server:SearchPlayer', function(playerId)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
     local SearchedPlayer = QBCore.Functions.GetPlayer(playerId)
     if not QBCore.Functions.GetPlayer(src) or not SearchedPlayer then return end
@@ -842,7 +842,7 @@ RegisterNetEvent('police:server:SeizeCash', function(playerId)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
     local Player = QBCore.Functions.GetPlayer(src)
     local SearchedPlayer = QBCore.Functions.GetPlayer(playerId)
@@ -862,7 +862,7 @@ RegisterNetEvent('police:server:SeizeDriverLicense', function(playerId)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
     local SearchedPlayer = QBCore.Functions.GetPlayer(playerId)
     if not QBCore.Functions.GetPlayer(src) or not SearchedPlayer then return end
@@ -883,7 +883,7 @@ RegisterNetEvent('police:server:RobPlayer', function(playerId)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
     local Player = QBCore.Functions.GetPlayer(src)
     local SearchedPlayer = QBCore.Functions.GetPlayer(playerId)
@@ -1064,7 +1064,7 @@ RegisterNetEvent('police:server:SetTracker', function(targetId)
     local targetPed = GetPlayerPed(targetId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
     local Target = QBCore.Functions.GetPlayer(targetId)
     if not QBCore.Functions.GetPlayer(src) or not Target then return end
