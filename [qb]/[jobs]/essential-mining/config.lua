@@ -3,7 +3,7 @@ print("^2essential-mining ^7v^42^7.^43^7.^41 ^7- ^2Mining Script by ^1Jimathy^7"
 Loc = {}
 
 Config = {
-	Debug = true, -- enable debug mode
+	Debug = false, -- enable debug mode
 	Blips = true, -- Enable Blips?
 	BlipNamer = false, -- Enable to Name Blips different things, disable if you already have too many blips as this will group them together
 	img = "qb-inventory/html/images/", --Set this to the image directory of your inventory script or "nil" if using newer qb-menu

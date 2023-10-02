@@ -12,39 +12,49 @@ Config.keyBind = {
 Config.RestrictedChannels = {
     [1] = {
         police = true,
-        ambulance = true
+        sast = true,
+        ambulance = true,
     },
     [2] = {
         police = true,
-        ambulance = true
+        sast = true,
+        ambulance = true,
     },
     [3] = {
         police = true,
-        ambulance = true
+        sast = true,
+        ambulance = true,
     },
     [4] = {
         police = true,
-        ambulance = true
+        sast = true,
+        ambulance = true,
     },
     [5] = {
-        police = true
+        police = true,
+        sast = true,
     },
     [6] = {
-        police = true
+        police = true,
+        sast = true,
     },
     [7] = {
-        police = true
+        police = true,
+        sast = true,
     },
     [8] = {
-        police = true
+        police = true,
+        sast = true,
     },
     [9] = {
         police = true,
+        sast = true,
         judge = true,
-        court = true
+        court = true,
     },
     [10] = {
         police = true,
+        sast = true
         -- judge = true,
         -- court = true
     },

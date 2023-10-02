@@ -45,7 +45,7 @@ RegisterNetEvent("QBCore:Client:SetDuty", function(job, state)
         TriggerServerEvent("ps-mdt:server:ToggleDuty")
 	TriggerServerEvent("ps-mdt:server:ClockSystem")
         TriggerServerEvent('QBCore:ToggleDuty')
-        if PlayerData.job.name == "police" or PlayerData.job.type == "leo" then
+        if PlayerData.job.name == "police" or PlayerData.job.name == "sast" or PlayerData.job.type == "leo" then
             TriggerServerEvent("police:server:UpdateCurrentCops")
         end
         if (PlayerData.job.name == "ambulance" or PlayerData.job.type == "ems") and job then
@@ -671,7 +671,7 @@ RegisterNUICallback("saveVehicleInfo", function(data, cb)
     local impound = data.impound
     local points = data.points
     local JobType = GetJobType(PlayerData.job.name)
-    if JobType == 'police' and impound.impoundChanged == true then
+    if JobType == 'police' or JobType == 'sast' and impound.impoundChanged == true then
         if impound.impoundActive then
             local found = 0
             local plate = string.upper(string.gsub(data['plate'], "^%s*(.-)%s*$", "%1"))
@@ -735,7 +735,7 @@ RegisterNUICallback("saveWeaponInfo", function(data, cb)
     local weapClass = data.weapClass
     local weapModel = data.weapModel
     local JobType = GetJobType(PlayerData.job.name)
-    if JobType == 'police' then
+    if JobType == 'police' or JobType == 'sast' then
         TriggerServerEvent('mdt:server:saveWeaponInfo', serial, imageurl, notes, owner, weapClass, weapModel)
     end
     cb(true)

@@ -49,7 +49,7 @@ exports['qb-target']:AddBoxZone("Troopersbossmenu",vector3(463.28903198242, -988
             icon = "fas fa-clipboard",
             label = "access boss menu",
             job = {
-                ["troopers"] = 0,
+                ["sast"] = 0,
             }
         },
     },

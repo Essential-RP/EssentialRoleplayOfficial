@@ -121,13 +121,13 @@ Config.Blips = {
         Scale = 0.7,
         Name = "Tattoo Shop",
     },
-    ["surgeon"] = {
-        Show = true,
-        Sprite = 102,
-        Color = 4,
-        Scale = 0.7,
-        Name = "Plastic Surgeon",
-    }
+    -- ["surgeon"] = {
+    --     Show = true,
+    --     Sprite = 102,
+    --     Color = 4,
+    --     Scale = 0.7,
+    --     Name = "Plastic Surgeon",
+    -- }
 }
 
 Config.TargetConfig = {

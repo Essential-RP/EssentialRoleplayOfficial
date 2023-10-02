@@ -47,6 +47,8 @@ local WeaponTable = {
     [GetHashKey('weapon_browning')]     = 'CLASS 1: Browning',
     [GetHashKey('weapon_l5')]           = 'CLASS 1: Desert Eagle',
     [GetHashKey('weapon_springfield')]  = 'CLASS 1: Springfield 1911',
+    [GetHashKey('weapon_glock17')]      = 'CLASS 1: Glock 17(PD Issued)',
+    [GetHashKey('weapon_p320b')]        = 'CLASS 1: P320 (PD Issued)',
 }
 local function VehicleTheft(vehicle)
     local vehdata = vehicleData(vehicle)
@@ -69,7 +71,7 @@ local function VehicleTheft(vehicle)
             z = currentPos.z
         },
         dispatchMessage = _U('vehicletheft'),
-        job = {"LEO", "police"}
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"}
     })
 end
 
@@ -111,7 +113,7 @@ local function VehicleShooting(vehdata)
             z = currentPos.z
         },
         dispatchMessage = _U('vehicleshots'),
-        job = {"LEO", "police"}
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"}
     })
 end
 
@@ -144,7 +146,7 @@ local function Shooting()
             z = currentPos.z
         },
         dispatchMessage = _U('shooting'),
-        job = {"LEO", "police"}
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"}
     })
 
 end
@@ -171,7 +173,7 @@ local function BankTruck()
             z = currentPos.z
         },
         dispatchMessage = _U('banktruck'), -- message
-        job = { "police" ,"bcso","rangers","troopers" } -- jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- jobs that will get the alerts
     })
 end
 
@@ -192,57 +194,57 @@ updateCharInfo = function(callsign, firstname, lastname, rank)
     })
 end
 
-local function SpeedingVehicle(vehdata)
-    local currentPos = GetEntityCoords(PlayerPedId())
-    local locationInfo = getStreetandZone(currentPos)
-    local heading = getCardinalDirectionFromHeading()
-    TriggerServerEvent("dispatch:server:notify", {
-        dispatchcodename = "speeding", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
-        dispatchCode = "10-11",
-        firstStreet = locationInfo,
-        model = vehdata.name,
-        plate = vehdata.plate,
-        priority = 2,
-        firstColor = vehdata.colour,
-        heading = heading,
-        automaticGunfire = false,
-        origin = {
-            x = currentPos.x,
-            y = currentPos.y,
-            z = currentPos.z
-        },
-        dispatchMessage = _U('speeding'),
-        job = {"LEO", "police"}
-    })
-end
+-- local function SpeedingVehicle(vehdata)
+--     local currentPos = GetEntityCoords(PlayerPedId())
+--     local locationInfo = getStreetandZone(currentPos)
+--     local heading = getCardinalDirectionFromHeading()
+--     TriggerServerEvent("dispatch:server:notify", {
+--         dispatchcodename = "speeding", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
+--         dispatchCode = "10-11",
+--         firstStreet = locationInfo,
+--         model = vehdata.name,
+--         plate = vehdata.plate,
+--         priority = 2,
+--         firstColor = vehdata.colour,
+--         heading = heading,
+--         automaticGunfire = false,
+--         origin = {
+--             x = currentPos.x,
+--             y = currentPos.y,
+--             z = currentPos.z
+--         },
+--         dispatchMessage = _U('speeding'),
+--         job = {"LEO", "police"}
+--     })
+-- end
 
-exports('SpeedingVehicle', SpeedingVehicle)
+-- exports('SpeedingVehicle', SpeedingVehicle)
 
-local function Fight()
-    local currentPos = GetEntityCoords(PlayerPedId())
-    local locationInfo = getStreetandZone(currentPos)
-    local gender = GetPedGender()
-    TriggerServerEvent("dispatch:server:notify", {
-        dispatchcodename = "fight", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
-        dispatchCode = "10-10",
-        firstStreet = locationInfo,
-        gender = gender,
-        model = nil,
-        plate = nil,
-        priority = 2,
-        firstColor = nil,
-        automaticGunfire = false,
-        origin = {
-            x = currentPos.x,
-            y = currentPos.y,
-            z = currentPos.z
-        },
-        dispatchMessage = _U('melee'),
-        job = {"LEO", "police"}
-    })
-end
+-- local function Fight()
+--     local currentPos = GetEntityCoords(PlayerPedId())
+--     local locationInfo = getStreetandZone(currentPos)
+--     local gender = GetPedGender()
+--     TriggerServerEvent("dispatch:server:notify", {
+--         dispatchcodename = "fight", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
+--         dispatchCode = "10-10",
+--         firstStreet = locationInfo,
+--         gender = gender,
+--         model = nil,
+--         plate = nil,
+--         priority = 2,
+--         firstColor = nil,
+--         automaticGunfire = false,
+--         origin = {
+--             x = currentPos.x,
+--             y = currentPos.y,
+--             z = currentPos.z
+--         },
+--         dispatchMessage = _U('melee'),
+--         job = {"LEO", "police"}
+--     })
+-- end
 
-exports('Fight', Fight)
+-- exports('Fight', Fight)
 
 local function InjuriedPerson()
     local currentPos = GetEntityCoords(PlayerPedId())
@@ -317,7 +319,7 @@ local function StoreRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('storerobbery'), -- message
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 end
 
@@ -345,7 +347,7 @@ local function ATMRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('atmrobbery'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- jobs that will get the alerts
     })
 end
 
@@ -372,7 +374,7 @@ local function FleecaBankRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('fleecabank'), -- message
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 end
 
@@ -399,7 +401,7 @@ local function PaletoBankRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('paletobank'), -- message
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 end
 
@@ -426,7 +428,7 @@ local function PacificBankRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('pacificbank'), -- message
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 end
 
@@ -452,7 +454,7 @@ local function PrisonBreak()
             z = currentPos.z
         },
         dispatchMessage = _U('prisonbreak'), -- message
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 end
 
@@ -480,7 +482,7 @@ local function VangelicoRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('vangelico'), -- message
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 end
 
@@ -506,7 +508,7 @@ local function HouseRobbery()
             z = currentPos.z
         },
         dispatchMessage = _U('houserobbery'), -- message
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 end
 
@@ -532,7 +534,7 @@ local function YachtHeist()
             z = currentPos.z
         },
         dispatchMessage = _U('yachtheist'), -- message
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 end
 
@@ -558,7 +560,7 @@ local function DrugSale()
             z = currentPos.z
         },
         dispatchMessage = _U('drugsell'), -- message
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 end
 
@@ -591,7 +593,7 @@ local function CarJacking(vehicle)
             z = currentPos.z
         },
         dispatchMessage = _U('carjacking'),
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 end
 
@@ -618,7 +620,7 @@ local function OfficerDown()
             z = currentPos.z
         },
         dispatchMessage = _U('officerdown'), -- message
-        job = { "ambulance", "police" } -- jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- jobs that will get the alerts
     })
 end
 
@@ -649,7 +651,7 @@ local function OfficerDown2()
             z = currentPos.z
         },
         dispatchMessage = _U('officerdown2'), -- message
-        job = { "ambulance", "police" } -- jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- jobs that will get the alerts
     })
 end
 
@@ -711,7 +713,7 @@ local function Explosion()
             z = currentPos.z
         },
         dispatchMessage = "Explosion Reported", -- message
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 end
 
@@ -737,7 +739,7 @@ local function SuspiciousActivity()
             z = currentPos.z
         },
         dispatchMessage = _U('susactivity'), -- message
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 end
 
@@ -769,7 +771,7 @@ local function Hunting()
             z = currentPos.z
         },
         dispatchMessage = _U('hunting'),
-        job = {"LEO", "police"} -- type or jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- type or jobs that will get the alerts
     })
 
 end
@@ -797,7 +799,7 @@ local function Carchop(camId)
             z = currentPos.z
         },
         dispatchMessage = "Possible Car Chop", -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police", "sast", "bcso", "sasp", "sapr"} -- jobs that will get the alerts
     })
 end
 

@@ -574,6 +574,225 @@ Config.JobInteractions = {
         }
     }
 },
+
+["sast"] = {
+    {
+    id = 'emergencybuttons',
+    title = 'Panic Buttons',
+    icon = 'angry',
+    items = {
+        {
+            id = 'emergencybutton',
+            title = '10-13a',
+            icon = 'skull',
+            type = 'client',
+            event = 'police:client:SendPoliceEmergencyAlert',
+            shouldClose = true
+        }, {
+            id = 'emergencybutton2',
+            title = '10-13b',
+            icon = 'sad-cry',
+            type = 'client',
+            event = 'police:client:SendPoliceEmergencyAlert2',
+            shouldClose = true
+        }
+    },
+}, {
+    id = 'policeradio',
+    title = 'Troopers Radio',
+    icon = 'broadcast-tower',
+    items = {
+        {
+            id = 'joinradio1',
+            title = 'Tac-1',
+            icon = 'microphone-alt',
+            type = 'client',
+            event = 'qb-radio:client:JoinRadioChannel1',
+            shouldClose = true
+        },{
+            id = 'joinradio2',
+            title = 'Tac-2',
+            icon = 'microphone-alt',
+            type = 'client',
+            event = 'qb-radio:client:JoinRadioChannel2',
+            shouldClose = true
+        }, {
+            id = 'joinradio3',
+            title = 'Tac-3',
+            icon = 'microphone-alt',
+            type = 'client',
+            event = 'qb-radio:client:JoinRadioChannel3',
+            shouldClose = true
+        }, {
+            id = 'joinradio4',
+            title = 'Tac-4',
+            icon = 'microphone-alt',
+            type = 'client',
+            event = 'qb-radio:client:JoinRadioChannel4',
+            shouldClose = true
+        }, {
+            id = 'joinradio5',
+            title = 'Tac-5',
+            icon = 'microphone-alt',
+            type = 'client',
+            event = 'qb-radio:client:JoinRadioChannel5',
+            shouldClose = true
+        }, {
+            id = 'joinradio6',
+            title = 'Tac-6',
+            icon = 'microphone-alt',
+            type = 'client',
+            event = 'qb-radio:client:JoinRadioChannel6',
+            shouldClose = true
+        }, {
+            id = 'joinradio7',
+            title = 'Tac-7',
+            icon = 'microphone-alt',
+            type = 'client',
+            event = 'qb-radio:client:JoinRadioChannel7',
+            shouldClose = true
+        }, {
+            id = 'joinradio8',
+            title = 'Tac-8',
+            icon = 'microphone-alt',
+            type = 'client',
+            event = 'qb-radio:client:JoinRadioChannel8',
+            shouldClose = true
+        }, {
+            id = 'joinradio9',
+            title = 'Tac-9',
+            icon = 'microphone-alt',
+            type = 'client',
+            event = 'qb-radio:client:JoinRadioChannel9',
+            shouldClose = true
+        }, {
+            id = 'joinradio10',
+            title = 'Tac-10',
+            icon = 'microphone-alt',
+            type = 'client',
+            event = 'qb-radio:client:JoinRadioChannel10',
+            shouldClose = true
+        }
+    }
+},	
+ {
+    id = 'takedriverlicense',
+    title = 'Revoke Drivers License',
+    icon = 'id-card',
+    type = 'client',
+    event = 'police:client:SeizeDriverLicense',
+    shouldClose = true
+}, {
+    id = 'policeinteraction',
+    title = 'Trooper Actions',
+    icon = 'tasks',
+    items = {
+        {
+            id = 'Seize',
+            title = 'Seize Vehicle',
+            icon = 'car',
+            type = 'client',
+            event = 'police:client:SeizeVehicle',
+            shouldClose = true
+        },
+        {
+            id = 'statuscheck',
+            title = 'Check Health Status',
+            icon = 'heartbeat',
+            type = 'client',
+            event = 'hospital:client:CheckStatus',
+            shouldClose = true
+        }, {
+            id = 'escort',
+            title = 'Escort',
+            icon = 'user-friends',
+            type = 'client',
+            event = 'police:client:EscortPlayer',
+            shouldClose = true
+        },  
+        {
+            id = 'GSR',
+            title = 'GSR',
+            icon = 'gsrtest',
+            type = 'client',
+            event = 'gsr:client:gsrtest',
+            shouldClose = true
+        }, 
+        {
+            id = 'searchplayer',
+            title = 'Search',
+            icon = 'search',
+            type = 'client',
+            event = 'police:client:SearchPlayer',
+            shouldClose = true
+        },
+        {
+            id = 'jailplayer',
+            title = 'Jail',
+            icon = 'user-lock',
+            type = 'client',
+            event = 'police:client:JailPlayer',
+            shouldClose = true
+        }
+    }
+}, {
+    id = 'policeobjects',
+    title = 'Objects',
+    icon = 'road',
+    items = {
+        {
+            id = 'spawnpion',
+            title = 'Cone',
+            icon = 'triangle-exclamation',
+            type = 'client',
+            event = 'police:client:spawnCone',
+            shouldClose = false
+        }, {
+            id = 'spawnhek',
+            title = 'Gate',
+            icon = 'torii-gate',
+            type = 'client',
+            event = 'police:client:spawnBarrier',
+            shouldClose = false
+        }, {
+            id = 'spawnschotten',
+            title = 'Speed Limit Sign',
+            icon = 'sign-hanging',
+            type = 'client',
+            event = 'police:client:spawnRoadSign',
+            shouldClose = false
+        }, {
+            id = 'spawntent',
+            title = 'Tent',
+            icon = 'campground',
+            type = 'client',
+            event = 'police:client:spawnTent',
+            shouldClose = false
+        }, {
+            id = 'spawnverlichting',
+            title = 'Lighting',
+            icon = 'lightbulb',
+            type = 'client',
+            event = 'police:client:spawnLight',
+            shouldClose = false
+        }, {
+            id = 'spikestrip',
+            title = 'Spike Strips',
+            icon = 'caret-up',
+            type = 'client',
+            event = 'police:client:SpawnSpikeStrip',
+            shouldClose = false
+        }, {
+            id = 'deleteobject',
+            title = 'Remove object',
+            icon = 'trash',
+            type = 'client',
+            event = 'police:client:deleteObject',
+            shouldClose = false
+        }
+    }
+}
+},
     ["ambulance"] = {
         {
             id = 'statuscheck',

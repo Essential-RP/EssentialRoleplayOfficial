@@ -14,18 +14,18 @@ Citizen.CreateThread(function()
     end
 end)
 
-if Config.EnableCleanGSR then
-    RegisterCommand(Config.CleanGSR, function()
-        if gsrPositive then
-            gsrPositive = false
-            gsrTimer = 0
-            Notify(Config.Text.TCleaningGSR)
-        elseif not gsrPositive then
-            Notify(Config.Text.AlreadyClean)
-        end
-        print('Cleaned GSR')
-    end)
-end
+-- if Config.EnableCleanGSR then
+--     RegisterCommand(Config.CleanGSR, function()
+--         if gsrPositive then
+--             gsrPositive = false
+--             gsrTimer = 0
+--             Notify(Config.Text.TCleaningGSR)
+--         elseif not gsrPositive then
+--             Notify(Config.Text.AlreadyClean)
+--         end
+--         print('Cleaned GSR')
+--     end)
+-- end
 
 RegisterNetEvent("gsr:client:gsrtest", function()
     local playerCoords = GetEntityCoords(plyPed)

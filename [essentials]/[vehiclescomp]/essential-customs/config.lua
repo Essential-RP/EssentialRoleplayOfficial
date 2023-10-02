@@ -11,7 +11,7 @@ maxVehiclePerformanceUpgrades = 0 -- | All Upgrades: 0 | No Upgrades: -1 | Can b
 
 -- ADJUST PRICING
 vehicleCustomisationPrices = {
-    cosmetics = {price = 400},
+    cosmetics = {price = 10},
     respray = {price = 1000},
     performance = {prices = {0, 3250, 5500, 10450, 15250, 20500, 25000}},
     turbo = {prices = {0, 15000}},

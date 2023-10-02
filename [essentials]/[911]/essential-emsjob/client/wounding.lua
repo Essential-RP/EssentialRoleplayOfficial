@@ -114,8 +114,8 @@ RegisterNetEvent('hospital:client:UseIfaks', function()
 		disableMouse = false,
 		disableCombat = true,
     }, {
-		animDict = "mp_suicide",
-		anim = "pill",
+		animDict = "anim@amb@business@weed@weed_inspecting_high_dry@",
+		anim = "weed_inspecting_high_base_inspector",
 		flags = 49,
     }, {}, {}, function() -- Done
 
@@ -126,7 +126,7 @@ RegisterNetEvent('hospital:client:UseIfaks', function()
 		HealOxy()
     end, function() -- Cancel
         exports['qb-inventory']:toggleItem(1, "ifaks", 1)
-        StopAnimTask(ped, "mp_suicide", "pill", 1.0)
+        StopAnimTask(ped, "anim@amb@business@weed@weed_inspecting_high_dry@", "weed_inspecting_high_base_inspector", 1.0)
         QBCore.Functions.Notify(Lang:t('error.canceled'), "error")
     end)
 end)

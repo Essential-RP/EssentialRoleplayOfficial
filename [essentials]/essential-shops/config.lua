@@ -564,7 +564,7 @@ Config.Products = {
         },
         [2] = {
             name = "fishingbait",
-            price = 250,
+            price = 30,
             amount = 250,
             info = {},
             type = "item",

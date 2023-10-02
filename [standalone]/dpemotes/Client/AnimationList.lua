@@ -290,25 +290,25 @@ DP.Walks = {
         "move_m@fire",
         "Fire 3"
     },
-    ["Flee"] = {
-        "move_f@flee@a"
-    },
-    ["Flee2"] = {
-        "move_f@flee@c",
-        "Flee 2"
-    },
-    ["Flee3"] = {
-        "move_m@flee@a",
-        "Flee 3"
-    },
-    ["Flee4"] = {
-        "move_m@flee@b",
-        "Flee 4"
-    },
-    ["Flee5"] = {
-        "move_m@flee@c",
-        "Flee 5"
-    },
+    -- ["Flee"] = {
+    --     "move_f@flee@a"
+    -- },
+    -- ["Flee2"] = {
+    --     "move_f@flee@c",
+    --     "Flee 2"
+    -- },
+    -- ["Flee3"] = {
+    --     "move_m@flee@a",
+    --     "Flee 3"
+    -- },
+    -- ["Flee4"] = {
+    --     "move_m@flee@b",
+    --     "Flee 4"
+    -- },
+    -- ["Flee5"] = {
+    --     "move_m@flee@c",
+    --     "Flee 5"
+    -- },
     ["Floyd"] = {
         "move_characters@floyd"
     },
@@ -20511,44 +20511,44 @@ DP.PropEmotes = {
             EmoteMoving = true
         }
     },
-    ["shield"] = {
-        "beachanims@molly",
-        "beachanim_surf_clip",
-        "Shield",
-        AnimationOptions = {
-            Prop = "prop_riot_shield",
-            PropBone = 18905,
-            PropPlacement = {
-                -0.04,
-                -0.06,
-                0.0,
-                4.04,
-                108.17,
-                -17.48
-            },
-            EmoteLoop = true,
-            EmoteMoving = true
-        }
-    },
-    ["shield2"] = {
-        "beachanims@molly",
-        "beachanim_surf_clip",
-        "Shield 2",
-        AnimationOptions = {
-            Prop = "prop_ballistic_shield",
-            PropBone = 18905,
-            PropPlacement = {
-                0.01,
-                -0.1,
-                -0.07,
-                1.83,
-                105.38,
-                -10.14
-            },
-            EmoteLoop = true,
-            EmoteMoving = true
-        }
-    },
+    -- ["shield"] = {
+    --     "beachanims@molly",
+    --     "beachanim_surf_clip",
+    --     "Shield",
+    --     AnimationOptions = {
+    --         Prop = "prop_riot_shield",
+    --         PropBone = 18905,
+    --         PropPlacement = {
+    --             -0.04,
+    --             -0.06,
+    --             0.0,
+    --             4.04,
+    --             108.17,
+    --             -17.48
+    --         },
+    --         EmoteLoop = true,
+    --         EmoteMoving = true
+    --     }
+    -- },
+    -- ["shield2"] = {
+    --     "beachanims@molly",
+    --     "beachanim_surf_clip",
+    --     "Shield 2",
+    --     AnimationOptions = {
+    --         Prop = "prop_ballistic_shield",
+    --         PropBone = 18905,
+    --         PropPlacement = {
+    --             0.01,
+    --             -0.1,
+    --             -0.07,
+    --             1.83,
+    --             105.38,
+    --             -10.14
+    --         },
+    --         EmoteLoop = true,
+    --         EmoteMoving = true
+    --     }
+    -- },
     ["cofpose"] = {
         "chocoholic@single23",
         "single23_clip",

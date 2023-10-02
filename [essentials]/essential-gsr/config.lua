@@ -6,7 +6,7 @@ Config = {
     GSRTestDistance = 3, -- Maximum Distance That You Can Be To Test For GSR ***I Recomend Leaving This Low***
 
     TestGSR = "gsr", -- Command To Test For GSR
-    CleanGSR = "cleangsr", -- Command To Clean GSR
+    -- CleanGSR = "cleangsr", -- Command To Clean GSR
 
     Text = {
         GettingTestedMsg = "^3You Have Been Tested For GSR By: ^2", -- The Message That Is Sent To The Person That Is Getting Tested

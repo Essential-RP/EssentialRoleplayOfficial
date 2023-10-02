@@ -167,7 +167,7 @@ Config.BoxZones = {
                     ["police"] = 0,
                     ["bcso"] = 0,
                     ["rangers"] = 0,
-                    ["troopers"] = 0,
+                    ["sast"] = 0,
                     ["corrections"] = 0,
                 }
             },
@@ -192,7 +192,7 @@ Config.BoxZones = {
                     ["police"] = 0,
                     ["bcso"] = 0,
                     ["rangers"] = 0,
-                    ["troopers"] = 0,
+                    ["sast"] = 0,
                     ["corrections"] = 0,
                 }
             },
@@ -217,7 +217,7 @@ Config.BoxZones = {
                     ["police"] = 0,
                     ["bcso"] = 0,
                     ["rangers"] = 0,
-                    ["troopers"] = 0,
+                    ["sast"] = 0,
                     ["corrections"] = 0,
                 }
             },
@@ -242,7 +242,7 @@ Config.BoxZones = {
                     ["police"] = 0,
                     ["bcso"] = 0,
                     ["rangers"] = 0,
-                    ["troopers"] = 0,
+                    ["sast"] = 0,
                     ["corrections"] = 0,
                 }
             },
@@ -267,7 +267,7 @@ Config.BoxZones = {
                     ["police"] = 0,
                     ["bcso"] = 0,
                     ["rangers"] = 0,
-                    ["troopers"] = 0,
+                    ["sast"] = 0,
                     ["corrections"] = 0,
                 }
             },
@@ -946,7 +946,13 @@ Config.TargetBones = {
                 event = "police:client:ImpoundVehicle",  
                 icon = "fas fa-car",
                 label = "Impound Vehicle",
-                job = 'police'
+                job = {
+                    ["police"] = 0,
+                    ["bcso"] = 0,
+                    ["rangers"] = 0,
+                    ["sast"] = 0,
+                    ["corrections"] = 0,
+                }
             },
             {
                 type = "client",

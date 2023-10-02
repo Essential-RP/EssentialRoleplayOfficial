@@ -74,8 +74,8 @@ Config.AuthorizedJobs = {
     ['corrections'] = {
         color = 46
     },
-    ['troopers'] = {
-        color = 0
+    ['sast'] = {
+        color = 46
     },
     ['rangers'] = {
         color = 2
