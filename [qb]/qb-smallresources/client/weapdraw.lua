@@ -72,6 +72,7 @@ local weapons = {
 	'WEAPON_PIPEBOMB',
 	'WEAPON_DOUBLEACTION',
 	'WEAPON_M6IC',
+	'WEAPON_P320b',
 	--Custom Weapon
 	'WEAPON_AK47',
 	'WEAPON_M9',
@@ -124,6 +125,7 @@ local holsterableWeapons = {
 	'WEAPON_FNX45',
 	'WEAPON_GLOCK18C',
 	'WEAPON_GLOCK22',
+	'WEAPON_P320b',
 }
 
 local holstered = true
@@ -140,7 +142,7 @@ AddEventHandler("QBCore:Client:OnJobUpdate", function(jobInfo)
     if isPolice and myJob ~= "police" then isPolice = false end
     if isTow and myJob ~= "tow" then isTow = false end
     if myJob == "police" then isPolice = true end
-    if myJob == "bcso" then isPolice = true end
+    if myJob == "sast" then isPolice = true end
     if myJob == "corrections" then isPolice = true end
 	if myJob == "rangers" then isPolice = true end
 	if myJob == "troopers" then isPolice = true end
@@ -154,7 +156,7 @@ AddEventHandler('QBCore:Client:SetDuty', function(duty)
     if isMedic and myJob ~= "ambulance" then isMedic = false end
     if isPolice and myJob ~= "police" then isPolice = false end
     if myJob == "police" then isPolice = true onDuty = duty end
-    if myJob == "bcso" then isPolice = true onDuty = duty end
+    if myJob == "sast" then isPolice = true onDuty = duty end
 	if myJob == "rangers" then isPolice = true onDuty = duty end
 	if myJob == "troopers" then isPolice = true onDuty = duty end
     if myJob == "corrections" then isPolice = true onDuty = duty end
@@ -167,7 +169,7 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
     if isMedic and myJob ~= "ambulance" then isMedic = false end
     if isPolice and myJob ~= "police" then isPolice = false end
     if myJob == "police" then isPolice = true onDuty = duty end
-    if myJob == "bcso" then isPolice = true onDuty = duty end
+    if myJob == "sast" then isPolice = true onDuty = duty end
 	if myJob == "rangers" then isPolice = true onDuty = duty end
 	if myJob == "troopers" then isPolice = true onDuty = duty end
     if myJob == "corrections" then isPolice = true onDuty = duty end

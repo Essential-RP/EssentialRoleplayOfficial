@@ -74,7 +74,9 @@ Config.Garages = {
                -- access to garage management
                ['HSK32182'] = true,
                ['OIX50352'] = true,
-
+               ['GPE99694'] = true,
+               ['ZXI94785'] = true,
+               ['MAX59133'] = true,
           }
      },
      ['mrpd_heli_pad'] = {

@@ -180,24 +180,41 @@ local HUD = {
             Citizen.Wait(250)
             local plyPed = PlayerPedId()
             local pedWeapon = GetSelectedPedWeapon(PlayerPedId()) or false;
-            local weaponMaxAmmo = pedWeapon and GetAmmoInPedWeapon(plyPed, pedWeapon) or 0;
-            local a, weaponClipAmmo = GetAmmoInClip(plyPed, pedWeapon);
+            
+            -- Check if the current weapon is not the stungun
+            if pedWeapon ~= GetHashKey("WEAPON_stungun") then
+                local weaponMaxAmmo = pedWeapon and GetAmmoInPedWeapon(plyPed, pedWeapon) or 0;
+                local a, weaponClipAmmo = GetAmmoInClip(plyPed, pedWeapon);
 
-            currentValues["MaxAmmo"] = weaponMaxAmmo - weaponClipAmmo
-            currentValues["ClipAmmo"] = weaponClipAmmo
+                currentValues["MaxAmmo"] = weaponMaxAmmo - weaponClipAmmo
+                currentValues["ClipAmmo"] = weaponClipAmmo
 
-            SendNUIMessage({ type = "ammo", data = currentValues })
+                SendNUIMessage({ type = "ammo", data = currentValues })
+            else
+                -- If the current weapon is the stungun, don't display ammo information
+                SendNUIMessage({ type = "ammo", data = {} })
+            end
         end
     end,
     
     HideAmmo = function(self)
         while true do
-          Wait(0)
+            Wait(0)
             HideHudComponentThisFrame(14) 
             DisplayAmmoThisFrame(false)
         end
     end,
 }
+
+CreateThread(function()
+    HUD:HideAmmo()
+    Citizen.Wait(250)
+end)
+
+CreateThread(function()
+    HUD:InfoThread()
+    Citizen.Wait(250)
+end)
 
 CreateThread(function()
     HUD:HideAmmo()

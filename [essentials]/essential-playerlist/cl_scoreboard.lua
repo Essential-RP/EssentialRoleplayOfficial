@@ -165,7 +165,7 @@ end)
 
 
 CreateThread(function()
-    RegisterKeyMapping("+scoreboard", "Scoreboard", "keyboard", "U") --Removed Bind System and added standalone version
+    RegisterKeyMapping("+scoreboard", "Scoreboard", "keyboard", "J") --Removed Bind System and added standalone version
     RegisterCommand('+scoreboard', OpenScoreboard, false)
     RegisterCommand('-scoreboard', CloseScoreboard, false)
     TriggerEvent("chat:removeSuggestion", "/+scoreboard")
