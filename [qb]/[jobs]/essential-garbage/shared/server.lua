@@ -37,7 +37,7 @@ Config.PriceBrackets = {
 
 -- The amount of groups stacks the Config.Deliver so if it's a 2-man job it's then 8, 16 per location 3 would be 16, 32, etc.
 Config.Deliver = {min = 4, max = 8} -- How many garbage bags per location?
-Config.MaxDeliver = 32 -- How many MAXIMUM garbage bags per location?
+Config.MaxDeliver = 16 -- How many MAXIMUM garbage bags per location?
 Config.MaterialCheck = 8 -- How many trash bags each person MUST turning in to receive a ticket 8 = 1 ticket, scales with group so if it's a 4-man group they need to turn in 32 and they will all receive 1 ticket
 
 Config.GroupLimit = 4 -- Increase the group limit to 4 people
@@ -49,4 +49,4 @@ Config.BuffExport = "tnj-buffs" -- Some people still use tnj-buffs some uses ps-
 Config.BuffType = "luck" -- What buff type do you use for players to receive more money?
 Config.BuffPay = 1.15 -- How much more do they get paid for having the buff? (15% more)
 
-Config.LeaderReturn = false -- If you want to make it so ONLY the group leader can return the truck then enable this
+Config.LeaderReturn = true -- If you want to make it so ONLY the group leader can return the truck then enable this
