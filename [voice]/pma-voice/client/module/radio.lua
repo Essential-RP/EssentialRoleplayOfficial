@@ -153,41 +153,39 @@ function isDead()
 end
 
 RegisterCommand('+radiotalk', function()
-    if GetConvarInt('voice_enableRadios', 1) ~= 1 then return end
-    if isDead() or LocalPlayer.state.disableRadio then return end
+	if GetConvarInt('voice_enableRadios', 1) ~= 1 then return end
+	if isDead() then return end
 	if exports["qb-inventory"]:HasItem('radio', 1) then
-	local PlayerData = QBCore.Functions.GetPlayerData()
-    if not radioPressed and radioEnabled then
-        if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] and not isHandcuffed then
-            if radioChannel > 0 then
-                logger.info('[radio] Start broadcasting, update targets and notify server.')
-                playerTargets(radioData, MumbleIsPlayerTalking(PlayerId()) and callData or {})
-                TriggerServerEvent('pma-voice:setTalkingOnRadio', true)
-                radioPressed = true
-                playMicClicks(true)
-                if GetConvarInt('voice_enableRadioAnim', 0) == 1 and not (GetConvarInt('voice_disableVehicleRadioAnim', 0) == 1 and IsPedInAnyVehicle(PlayerPedId(), false)) then
-                    if not disableRadioAnim then
-                        RequestAnimDict('random@arrests')
-                        while not HasAnimDictLoaded('random@arrests') do
-                            Citizen.Wait(10)
-                        end
-                        TaskPlayAnim(PlayerPedId(), "random@arrests", "generic_radio_enter", 8.0, 2.0, -1, 50, 2.0, false, false, false)
-                        radioProp = CreateObject(`prop_cs_hand_radio`, 1.0, 1.0, 1.0, 1, 1, 0)
-                        AttachEntityToEntity(radioProp, PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 18905), 0.13, 0.02, 0.02, 270.0, 50.0, -5.0, 1, 0, 0, 0, 2, 1)
-                    end
-                end
-                Citizen.CreateThread(function()
-                    TriggerEvent("pma-voice:radioActive", true)
-                    while radioPressed do
-                        Wait(0)
-                        SetControlNormal(0, 249, 1.0)
-                        SetControlNormal(1, 249, 1.0)
-                        SetControlNormal(2, 249, 1.0)
-                    end
-                end)
-            end
-        end
-    end
+		local PlayerData = QBCore.Functions.GetPlayerData()
+		if not radioPressed and radioEnabled then
+			if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] and not isHandcuffed then
+				if radioChannel > 0 then
+					logger.info('[radio] Start broadcasting, update targets and notify server.')
+					playerTargets(radioData, MumbleIsPlayerTalking(PlayerId()) and callData or {})
+					TriggerServerEvent('pma-voice:setTalkingOnRadio', true)
+					radioPressed = true
+					-- playMicClicks(true)
+					TriggerServerEvent('InteractSound_SV:PlayOnSource', "01-on", 0.05)
+					if GetConvarInt('voice_enableRadioAnim', 0) == 1 and not (GetConvarInt('voice_disableVehicleRadioAnim', 0) == 1 and IsPedInAnyVehicle(PlayerPedId(), false)) then
+						RequestAnimDict('random@arrests')
+						while not HasAnimDictLoaded('random@arrests') do
+							Citizen.Wait(10)
+						end
+						TaskPlayAnim(PlayerPedId(), "random@arrests", "generic_radio_enter", 8.0, 2.0, -1, 50, 2.0, 0, 0, 0)
+					end
+					Citizen.CreateThread(function()
+						TriggerEvent("pma-voice:radioActive", true)
+						while radioPressed do
+							Wait(0)
+							SetControlNormal(0, 249, 1.0)
+							SetControlNormal(1, 249, 1.0)
+							SetControlNormal(2, 249, 1.0)
+						end
+					end)
+				end
+			end
+		end
+	end
 end, false)
 
 RegisterCommand('-radiotalk', function()
