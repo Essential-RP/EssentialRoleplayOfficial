@@ -45,12 +45,12 @@
 -- end)
 
 local Areas = {
-    { pos = vector3(484.56, -3125.31, 6.07), radius = 100 }, -- Example location
+    { pos = vector3(438.86126708984, -1022.7308349609, 28.656549453735), radius = 200 }, -- Example location
     { pos = vector3(549.78, -3165.05, 6.07), radius = 100 }, -- Example location
     { pos = vector3(489.46, -3345.2, 6.07), radius = 100 }, -- Example location
 }
 
-local enableDebug = true  
+local enableDebug = false  
 local zones = {}
 
 CreateThread(function()

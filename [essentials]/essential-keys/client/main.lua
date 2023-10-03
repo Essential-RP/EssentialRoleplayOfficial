@@ -16,6 +16,62 @@ local IsHotwiring = false
 ----   Threads     ----
 -----------------------
 
+local function PoliceCall()
+    if not AlertSend then
+        local ped = PlayerPedId()
+        local pos = GetEntityCoords(ped)
+        local chance = Config.PoliceAlertChance
+        if GetClockHours() >= 1 and GetClockHours() <= 6 then
+            chance = Config.PoliceNightAlertChance
+        end
+        if math.random() <= chance then
+            local closestPed = PlayerPedId()
+            if closestPed ~= nil then
+                local msg = ""
+                local s1, s2 = GetStreetNameAtCoord(pos.x, pos.y, pos.z)
+                local streetLabel = GetStreetNameFromHashKey(s1)
+                local street2 = GetStreetNameFromHashKey(s2)
+                if street2 ~= nil and street2 ~= "" then
+                    streetLabel = streetLabel .. " " .. street2
+                end
+                local alertTitle = ""
+                if IsPedInAnyVehicle(ped) then
+                    local vehicle = GetVehiclePedIsIn(ped, false)
+                    local modelName = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)):lower()
+                    if QBCore.Shared.Vehicles[modelName] ~= nil then
+                        Name = QBCore.Shared.Vehicles[modelName]["brand"] .. ' ' .. QBCore.Shared.Vehicles[modelName]["name"]
+                    else
+                        Name = "Unknown"
+                    end
+                    local modelPlate = QBCore.Functions.GetPlate(vehicle)
+                    local msg = "Vehicle theft attempt at " .. streetLabel .. ". Vehicle: " .. Name .. ", Licenseplate: " .. modelPlate
+                    local alertTitle = "Vehicle theft attempt at"
+                    exports['ps-dispatch']:VehicleTheft(vehicle)
+                    --TriggerServerEvent("police:server:VehicleCall", pos, msg, alertTitle, streetLabel, modelPlate, Name)
+                else
+                    local vehicle = QBCore.Functions.GetClosestVehicle()
+                    local modelName = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)):lower()
+                    local modelPlate = QBCore.Functions.GetPlate(vehicle)
+                    if QBCore.Shared.Vehicles[modelName] ~= nil then
+                        Name = QBCore.Shared.Vehicles[modelName]["brand"] .. ' ' .. QBCore.Shared.Vehicles[modelName]["name"]
+                    else
+                        Name = "Unknown"
+                    end
+                    local msg = "Vehicle theft attempt at " .. streetLabel .. ". Vehicle: " .. Name .. ", Licenseplate: " .. modelPlate
+                    local alertTitle = "Vehicle theft attempt at"
+                    exports['ps-dispatch']:VehicleTheft(vehicle)
+                    --TriggerServerEvent("police:server:VehicleCall", pos, msg, alertTitle, streetLabel, modelPlate, Name)
+                end
+            end
+        end
+        AlertSend = true
+        SetTimeout(Config.AlertCooldown, function()
+            AlertSend = false
+        end)
+    end
+end
+
+
 CreateThread(function()
     while true do
         local sleep = 1000
@@ -370,11 +426,13 @@ function LockpickDoor1(isnotAdvanced)
     if #(pos - GetEntityCoords(vehicle)) > 2.5 then return end
     if GetVehicleDoorLockStatus(vehicle) <= 0 then return end
     local seconds = math.random(47,59)
-    local circles = math.random(7,9)
+    local circles = math.random(6,8)
+
+    PoliceCall()
 
     notadvanced = isnotAdvanced
     if IsPedInAnyVehicle(PlayerPedId()) then
-        seconds = math.random(10,20)
+        seconds = math.random(47,59)
         loadAnimDict("anim@amb@clubhouse@tutorial@bkr_tut_ig3@")
         TaskPlayAnim(PlayerPedId(), "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
     else

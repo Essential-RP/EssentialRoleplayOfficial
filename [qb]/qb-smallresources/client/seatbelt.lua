@@ -25,14 +25,14 @@ local function EjectFromVehicle()
     local coords = GetOffsetFromEntityInWorldCoords(veh, 1.0, 0.0, 1.0)
     SetEntityCoords(ped, coords.x, coords.y, coords.z)
     Wait(1)
-    SetPedToRagdoll(ped, 5511, 5511, 0, 0, 0, 0)
+    SetPedToRagdoll(ped, 3000, 3000, 0, 0, 0, 0)
     SetEntityVelocity(ped, veloc.x*4,veloc.y*4,veloc.z*4)
-    local ejectspeed = math.ceil(GetEntitySpeed(ped) * 8)
-    if GetEntityHealth(ped) - ejectspeed > 0 then
-        SetEntityHealth(ped, GetEntityHealth(ped) - ejectspeed)
-    elseif GetEntityHealth(ped) ~= 0 then
-        SetEntityHealth(ped, 0)
-    end
+    -- local ejectspeed = math.ceil(GetEntitySpeed(ped) * 8)
+    -- if GetEntityHealth(ped) - ejectspeed > 0 then
+    --     -- SetEntityHealth(ped, GetEntityHealth(ped) - ejectspeed)
+    -- elseif GetEntityHealth(ped) ~= 0 then
+    --     SetEntityHealth(ped, 0)
+    -- end
 end
 
 local function ToggleSeatbelt()
@@ -84,24 +84,16 @@ exports("HasHarness", HasHarness)
 
 -- Ejection Logic
 
-RegisterNetEvent('QBCore:Client:EnteredVehicle', function()
-    local playerPed = PlayerPedId()
-    while IsPedInAnyVehicle(playerPed, false) do
+CreateThread(function()
+    while true do
         Wait(0)
+        local playerPed = PlayerPedId()
         local currentVehicle = GetVehiclePedIsIn(playerPed, false)
         if currentVehicle and currentVehicle ~= false and currentVehicle ~= 0 then
             SetPedHelmet(playerPed, false)
             lastVehicle = GetVehiclePedIsIn(playerPed, false)
             if GetVehicleEngineHealth(currentVehicle) < 0.0 then
                 SetVehicleEngineHealth(currentVehicle, 0.0)
-            end
-            if (GetVehicleHandbrake(currentVehicle) or (GetVehicleSteeringAngle(currentVehicle)) > 25.0 or (GetVehicleSteeringAngle(currentVehicle)) < -25.0) then
-                if handbrake == 0 then
-                    handbrake = 100
-                    ResetHandBrake()
-                else
-                    handbrake = 100
-                end
             end
 
             thisFrameVehicleSpeed = GetEntitySpeed(currentVehicle) * 3.6
@@ -115,18 +107,21 @@ RegisterNetEvent('QBCore:Client:EnteredVehicle', function()
                         if not seatbeltOn and not IsThisModelABike(currentVehicle) then
                             if math.random(math.ceil(lastFrameVehiclespeed)) > 60 then
                                 if not harnessOn then
+                                    print("over 100")
                                     EjectFromVehicle()
-                                else
-                                    harnessHp -= 1
-                                    TriggerServerEvent('seatbelt:DoHarnessDamage', harnessHp, harnessData)
+                                -- else
+                                --     harnessHp -= 1
+                                --     TriggerServerEvent('seatbelt:DoHarnessDamage', harnessHp, harnessData)
                                 end
                             end
-                        elseif (seatbeltOn or harnessOn) and not IsThisModelABike(currentVehicle) then
+                        elseif (seatbeltOn or harnessOn) and not IsThisModelABike(currentVehicle) and GetPedInVehicleSeat(currentVehicle, -1) == playerPed then
                             if lastFrameVehiclespeed > 150 then
                                 if math.random(math.ceil(lastFrameVehiclespeed)) > 150 then
                                     if not harnessOn then
+                                        print("over 140")
                                         EjectFromVehicle()
                                     else
+                                        print("over 140")
                                         harnessHp -= 1
                                         TriggerServerEvent('seatbelt:DoHarnessDamage', harnessHp, harnessData)
                                     end
@@ -216,7 +211,6 @@ RegisterNetEvent('QBCore:Client:EnteredVehicle', function()
             currentvehicleBodyHealth = 0
             frameBodyChange = 0
             Wait(2000)
-            break
         end
     end
 end)
