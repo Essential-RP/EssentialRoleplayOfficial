@@ -155,7 +155,8 @@ end
 RegisterCommand('+radiotalk', function()
     if GetConvarInt('voice_enableRadios', 1) ~= 1 then return end
     if isDead() or LocalPlayer.state.disableRadio then return end
-
+	if exports["qb-inventory"]:HasItem('radio', 1) then
+	local PlayerData = QBCore.Functions.GetPlayerData()
     if not radioPressed and radioEnabled then
         if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] and not isHandcuffed then
             if radioChannel > 0 then
