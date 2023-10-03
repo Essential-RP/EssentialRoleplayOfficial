@@ -9,7 +9,7 @@ Config.DoorList['Pillbox -Ward C'] = {
         {objName = -434783486, objYaw = 249.98275756836, objCoords = vec3(349.313751, -586.325989, 43.433910)}
     },
     authorizedJobs = { ['rangers'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['sast'] = 0, ['ambulance'] = 0 },
-    locked = true,
+    locked = false,
     distance = 2,
 }
 -- Ward A Entrance created by yax
@@ -22,7 +22,7 @@ Config.DoorList['Pillbox-Ward A Entrance'] = {
         {objName = -1700911976, objYaw = 340.00003051758, objCoords = vec3(305.221863, -582.305603, 43.433910)}
     },
     distance = 2,
-    locked = true,
+    locked = false,
 }
 
 -- Lab created by yax
@@ -32,7 +32,7 @@ Config.DoorList['Pillbox-Lab'] = {
     objCoords = vec3(307.118195, -569.568970, 43.433910),
     objYaw = 340.00003051758,
     fixText = false,
-    locked = true,
+    locked = false,
     objName = 854291622,
     distance = 2,
     doorType = 'door',
@@ -43,7 +43,7 @@ Config.DoorList['Pillbox-Plastic Surgery'] = {
     doorRate = 1.0,
     doorType = 'double',
     authorizedJobs = { ['rangers'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['sast'] = 0, ['ambulance'] = 0 },
-    locked = true,
+    locked = false,
     distance = 2,
     doors = {
         {objName = -1700911976, objYaw = 340.00003051758, objCoords = vec3(314.424103, -572.221558, 43.433910)},
@@ -56,7 +56,7 @@ Config.DoorList['Pillbox-Plastic Surgery #2'] = {
     doorRate = 1.0,
     doorType = 'double',
     authorizedJobs = { ['rangers'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['sast'] = 0, ['ambulance'] = 0 },
-    locked = true,
+    locked = false,
     distance = 2,
     doors = {
         {objName = -1700911976, objYaw = 340.00003051758, objCoords = vec3(320.261536, -574.346313, 43.433910)},
@@ -73,7 +73,7 @@ Config.DoorList['Pillbox-Intense Care'] = {
         {objName = -1700911976, objYaw = 160.00003051758, objCoords = vec3(316.065704, -578.347717, 43.433910)},
         {objName = -434783486, objYaw = 160.00003051758, objCoords = vec3(318.484680, -579.228149, 43.433910)}
     },
-    locked = true,
+    locked = false,
     authorizedJobs = { ['rangers'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['sast'] = 0, ['ambulance'] = 0 },
 }
 
@@ -83,7 +83,7 @@ Config.DoorList['Pillbox-Surgery'] = {
     doorType = 'double',
     authorizedJobs = { ['rangers'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['sast'] = 0, ['ambulance'] = 0 },
     distance = 2,
-    locked = true,
+    locked = false,
     doors = {
         {objName = -434783486, objYaw = 340.00003051758, objCoords = vec3(323.237549, -575.429443, 43.433910)},
         {objName = -1700911976, objYaw = 340.00003051758, objCoords = vec3(325.656525, -576.309937, 43.433910)}
@@ -98,7 +98,7 @@ Config.DoorList['Pillbox-Ward B Entrance'] = {
         {objName = -434783486, objYaw = 249.98275756836, objCoords = vec3(326.549896, -578.040649, 43.433910)}
     },
     authorizedJobs = { ['rangers'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['sast'] = 0, ['ambulance'] = 0 },
-    locked = true,
+    locked = false,
     doorRate = 1.0,
     distance = 2,
 }
@@ -107,7 +107,7 @@ Config.DoorList['Pillbox-Ward B Entrance'] = {
 Config.DoorList['Pillbox-Main Hall '] = {
     doorRate = 1.0,
     doorType = 'double',
-    locked = true,
+    locked = false,
     distance = 2,
     authorizedJobs = { ['rangers'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['sast'] = 0, ['ambulance'] = 0 },
     doors = {
@@ -121,7 +121,7 @@ Config.DoorList['Pillbox-Administration'] = {
     doorType = 'door',
     doorRate = 1.0,
     objCoords = vec3(339.004974, -586.703369, 43.433910),
-    locked = true,
+    locked = false,
     authorizedJobs = { ['rangers'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['sast'] = 0, ['ambulance'] = 0 },
     objYaw = 340.00003051758,
     fixText = false,
@@ -138,7 +138,7 @@ Config.DoorList['Pillbox-Staff ONLY'] = {
     authorizedJobs = { ['rangers'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['sast'] = 0, ['ambulance'] = 0 },
     doorType = 'door',
     doorRate = 1.0,
-    locked = true,
+    locked = false,
     distance = 2,
 }
 
@@ -151,6 +151,6 @@ Config.DoorList['Pillbox-Staff ONLY #2'] = {
     doorType = 'door',
     authorizedJobs = { ['rangers'] = 0, ['police'] = 0, ['bcso'] = 0, ['corrections'] = 0,['sast'] = 0, ['ambulance'] = 0 },
     doorRate = 1.0,
-    locked = true,
+    locked = false,
     objName = 854291622,
 }
