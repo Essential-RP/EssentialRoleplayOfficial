@@ -43,3 +43,10 @@
 --         end
 --     end
 -- end)
+
+CreateThread(function()
+    while true do
+    ClearAreaOfVehicles(x, y, z, radius, false, false, false, false, false)
+        Wait(0)
+    end
+end)
