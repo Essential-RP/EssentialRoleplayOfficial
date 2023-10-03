@@ -44,9 +44,32 @@
 --     end
 -- end)
 
+local Areas = {
+    { pos = vector3(484.56, -3125.31, 6.07), radius = 100 }, -- Example location
+    { pos = vector3(549.78, -3165.05, 6.07), radius = 100 }, -- Example location
+    { pos = vector3(489.46, -3345.2, 6.07), radius = 100 }, -- Example location
+}
+
+local enableDebug = true  
+local zones = {}
+
 CreateThread(function()
+    local ped = PlayerPedId()
+    local sleep = 10000
     while true do
-    ClearAreaOfVehicles(x, y, z, radius, false, false, false, false, false)
-        Wait(0)
+        sleep = 10000
+        for i=1, #Areas do
+            if #(GetEntityCoords(ped) - Areas[i].pos) < (Areas[i].radius + 100) then
+                ClearAreaOfVehicles(Areas[i].pos.x, Areas[i].pos.y, Areas[i].pos.z, Areas[i].radius, 0)
+                sleep = 100
+            end
+
+            if enableDebug then
+                zones[i] = AddBlipForRadius(Areas[i].pos.x, Areas[i].pos.y, Areas[i].pos.z, Areas[i].radius)
+                SetBlipColour(zones[i], 1)
+                SetBlipAlpha(zones[i], 128)
+            end
+        end
+        Wait(sleep)
     end
 end)
