@@ -340,7 +340,7 @@ Config.smallarmory = {
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8}
         },
         [12] = {
-            name = "policepouches",
+            name = "policepouches1",
             price = 150,
             amount = 100,
             info = {},
