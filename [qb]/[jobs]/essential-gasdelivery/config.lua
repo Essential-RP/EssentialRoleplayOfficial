@@ -19,8 +19,6 @@ Config.TruckToSpawn = "packer" -- Vehicle MUST be able to pull a large trailer.
 
 Config.tankerCoords = {
     vector3(1737.1252441406, -1537.6116943359, 112.68978118896),
-    vector3(1744.9931640625, -1509.5534667969, 112.82014465332),
-    vector3(1748.9940185547, -1498.0612792969, 112.8011932373)
 }
 
 Config.TrailerToSpawn = "tanker2" -- Must be a tanker variant, or else the rope will not place in the right position. If this does not bother you, then change to your liking.

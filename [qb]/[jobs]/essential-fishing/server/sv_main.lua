@@ -17,28 +17,28 @@ RegisterNetEvent('essential-fishing:server:ReceiveFish', function()
 
     local random = math.random(100) -- Random number from 1 to 100
     local item
-
-    if random >= 1 and random <= 30 then -- 30%
+    
+    if random >= 90 and random <= 100 then -- 10%
         item = 'fish'
-    elseif random >= 30 and random <= 37 then -- 7%
+    elseif random >= 80 and random <= 100 then -- 5%
         item = 'fish2'
-    elseif random >= 37 and random <= 44 then -- 7%
+    elseif random >= 70 and random <= 100 then -- 6%
         item = 'catfish'
-    elseif random >= 44 and random <= 51 then -- 7%
+    elseif random >= 60 and random <= 100 then -- 6%
         item = 'goldfish'
-    elseif random >= 51 and random <= 58 then -- 7%
+    elseif random >= 50 and random <= 100 then -- 6%
         item = 'largemouthbass'
-    elseif random >= 58 and random <= 65 then -- 7%
+    elseif random >= 40 and random <= 100 then -- 6%
         item = 'redfish'
-    elseif random >= 65 and random <= 72 then -- 7%
+    elseif random >= 30 and random <= 100 then -- 6%
         item = 'salmon'
-    elseif random >= 72 and random <= 79 then -- 7%
+    elseif random >= 25 and random <= 100 then -- 6%
         item = 'stingray'
-    elseif random >= 79 and random <= 86 then -- 7%
+    elseif random >= 20 and random <= 100 then -- 6%
         item = 'stripedbass'
-    elseif random >= 86 and random <= 93 then -- 7%
+    elseif random >= 2 and random <= 100 then -- 7%
         item = 'whale'
-    elseif random >= 93 and random <= 100 then -- 7%
+    elseif random >= 1 and random <= 100 then 
         item = 'whale2'
     end
 

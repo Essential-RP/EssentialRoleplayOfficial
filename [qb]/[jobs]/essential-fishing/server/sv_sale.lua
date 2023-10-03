@@ -7,10 +7,10 @@ local priceTable = {
     largemouthbass = 193,
     redfish = 220,
     salmon = 220,
-    stingray = 440,
-    stripedbass = 440,
-    whale = 450,
-    whale2 = 500
+    stingray = 300,
+    stripedbass = 250,
+    whale = 325,
+    whale2 = 375
 }
 
 RegisterNetEvent('essential-fishing:server:SellFish', function(fish, amount)

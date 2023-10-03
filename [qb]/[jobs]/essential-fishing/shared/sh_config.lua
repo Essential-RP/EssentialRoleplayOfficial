@@ -1,11 +1,11 @@
 Shared = {} or Shared
 
-Shared.CastTimeMin = 5 -- Minimum Time in seconds between fishing and minigame
-Shared.CastTimeMax = 8 -- Maximum Time in seconds between fishing and minigame
+Shared.CastTimeMin = 10 -- Minimum Time in seconds between fishing and minigame
+Shared.CastTimeMax = 12 -- Maximum Time in seconds between fishing and minigame
 
-Shared.MinigameCirclesMin = 3 -- Minigame: Minimum amount of circles
-Shared.MinigameCirclesMax = 4 -- Minigame: Maximum amount of circles
-Shared.MinigameTime = 20 -- Minigame: Amount of time in seconds
+Shared.MinigameCirclesMin = 6 -- Minigame: Minimum amount of circles
+Shared.MinigameCirclesMax = 8 -- Minigame: Maximum amount of circles
+Shared.MinigameTime = 40 -- Minigame: Amount of time in seconds
 
 Shared.SellLocation = vector4(-1038.65, -1396.79, 4.55, 74.91)
 
