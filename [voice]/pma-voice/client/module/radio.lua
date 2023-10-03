@@ -195,26 +195,22 @@ RegisterCommand('+radiotalk', function()
 end, false)
 
 RegisterCommand('-radiotalk', function()
-    if radioChannel > 0 or radioEnabled and radioPressed then
-        radioPressed = false
-        MumbleClearVoiceTargetPlayers(voiceTarget)
-        playerTargets(MumbleIsPlayerTalking(PlayerId()) and callData or {})
-        TriggerEvent("pma-voice:radioActive", false)
-        playMicClicks(false)
-        if GetConvarInt('voice_enableRadioAnim', 0) == 1 then
-            StopAnimTask(PlayerPedId(), "random@arrests", "generic_radio_enter", -4.0)
-			ClearPedTasks(PlayerPedId())
-			if radioProp ~= 0 then
-				DeleteObject(radioProp)
-				radioProp = 0
-			end
-	-- TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        end
-        TriggerServerEvent('pma-voice:setTalkingOnRadio', false)
-    end
+	if radioChannel > 0 or radioEnabled and radioPressed then
+		radioPressed = false
+		MumbleClearVoiceTargetPlayers(voiceTarget)
+		playerTargets(MumbleIsPlayerTalking(PlayerId()) and callData or {})
+		TriggerEvent("pma-voice:radioActive", false)
+		-- playMicClicks(false)
+		TriggerServerEvent('InteractSound_SV:PlayOnSource', "01-off", 0.1)
+		if GetConvarInt('voice_enableRadioAnim', 0) == 1 then
+			StopAnimTask(PlayerPedId(), "random@arrests", "generic_radio_enter", -4.0)
+		end
+		TriggerServerEvent('pma-voice:setTalkingOnRadio', false)
+	end
 end, false)
+
 if gameVersion == 'fivem' then
-	RegisterKeyMapping('+radiotalk', 'Talk over Radio', 'keyboard', GetConvar('voice_defaultRadio', 'LMENU'))
+	RegisterKeyMapping('+radiotalk', 'Talk over Radio', 'keyboard', GetConvar('voice_defaultRadio', ''))
 end
 
 --- event syncRadio
