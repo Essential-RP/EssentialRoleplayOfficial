@@ -83,7 +83,7 @@ Config.ShowJobBasedBodycams = true --show bodycams based on jobs, if false then 
 
 Config.Menu = "qb-menu" -- "nh-context" , "qb-menu", "lib" -- you can add your own menu system in cl_customise.lua
 
-Config.PlaySoundFromPlayer = true --play beep sound from players to nearby players if player is wearing the bodycam
+Config.PlaySoundFromPlayer = false --play beep sound from players to nearby players if player is wearing the bodycam
 
 ----EFFECTS----
 
