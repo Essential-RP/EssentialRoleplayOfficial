@@ -108,6 +108,26 @@ Config.ConsumablesEat = {
     ["twerks_candy"] = math.random(10, 11),
     ["snikkel_candy"] = math.random(10, 11),
     ["grillcheese"] = math.random(9, 10),
+
+    --catcafe
+    ["bmochi"] = math.random(15, 20),
+    ["pmochi"] = math.random(15, 20),
+    ["gmochi"] = math.random(15, 20),
+    ["omochi"] = math.random(15, 20),
+    ["sake"] = math.random(15, 20),
+    ["miso"] = math.random(35, 45),
+    ["cake"] = math.random(15, 20),
+    ["bento"] = math.random(25, 35),
+    ["riceball"] = math.random(15, 20),
+    ["nekocookie"] = math.random(10, 15),
+    ["nekodonut"] = math.random(15, 20),
+    ["cakepop"] = math.random(10, 15),
+    ["pancake"] = math.random(15, 20),
+    ["pizza"] = math.random(30, 40),
+    ["purrito"] = math.random(20, 25),
+    ["noodlebowl"] = math.random(30, 50),
+    ["noodles"] = math.random(15, 20),
+    ["ramen"] = math.random(20, 25),
     --Food 
     ["burger-bleeder"] = math.random(25, 40),
     ["burger-moneyshot"] = math.random(25, 40),
@@ -206,7 +226,15 @@ Config.ConsumablesDrink = {
     ["bean-cola"] = math.random(40, 50),
     ["bean-cafe"] = math.random(40, 50),
     ["bean-cafe"] = math.random(40, 50),
-
+    ["bobatea"] = math.random(15, 20),
+    ["bbobatea"] = math.random(15, 20),
+    ["gbobatea"] = math.random(15, 20),
+    ["pbobatea"] = math.random(15, 20),
+    ["obobatea"] = math.random(15, 20),
+    ["nekolatte"] = math.random(15, 20),
+    ["catcoffee"] = math.random(20, 25),
+    ["miso"] = math.random(35, 45),
+    ["mocha"] = math.random(35, 45),
 }
 
 Config.ConsumablesAlcohol = {
