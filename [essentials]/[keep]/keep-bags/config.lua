@@ -167,10 +167,10 @@ Config.Backpacks                          = {
           size = 50000,
           cloth = {
                male = {
-                    ["accessory"] = { item = 147, texture = 0 }
+                    ["accessory"] = { item = 0, texture = 0 }
                },
                female = {
-                    ["accessory"] = { item = 123, texture = 0 }
+                    ["accessory"] = { item = 0, texture = 0 }
                },
           },
           whitelist = {
@@ -181,7 +181,8 @@ Config.Backpacks                          = {
                ['weapon_stungun'] = true,
                ['handcuffs'] = true,
                ['pistol_ammo'] = true,
-               ['weapon_flashlight'] = true
+               ['weapon_flashlight'] = true,
+               ['heavyarmor'] = true
 
           },
      },
