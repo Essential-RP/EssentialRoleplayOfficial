@@ -165,7 +165,7 @@ RegisterCommand('+radiotalk', function()
                     playerTargets(radioData, MumbleIsPlayerTalking(PlayerId()) and callData or {})
                     TriggerServerEvent('pma-voice:setTalkingOnRadio', true)
                     radioPressed = true
-                    -- playMicClicks(true)
+                    playMicClicks(true)
                     TriggerServerEvent('InteractSound_SV:PlayOnSource', "01-on", 0.05)
                     if GetConvarInt('voice_enableRadioAnim', 0) == 1 and not (GetConvarInt('voice_disableVehicleRadioAnim', 0) == 1 and IsPedInAnyVehicle(PlayerPedId(), false)) then
                         
