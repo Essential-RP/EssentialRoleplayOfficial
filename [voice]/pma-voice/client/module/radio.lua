@@ -1,3 +1,4 @@
+local QBCore = exports['qb-core']:GetCoreObject()
 local radioChannel = 0
 local radioNames = {}
 local disableRadioAnim = false
