@@ -369,8 +369,8 @@ function LockpickDoor1(isnotAdvanced)
     if HasKeys(QBCore.Functions.GetPlate(vehicle)) then return end
     if #(pos - GetEntityCoords(vehicle)) > 2.5 then return end
     if GetVehicleDoorLockStatus(vehicle) <= 0 then return end
-    local seconds = math.random(35,45)
-    local circles = math.random(9,10)
+    local seconds = math.random(47,59)
+    local circles = math.random(7,9)
 
     notadvanced = isnotAdvanced
     if IsPedInAnyVehicle(PlayerPedId()) then
@@ -402,7 +402,7 @@ function LockpickDoor(isAdvanced)
     if HasKeys(QBCore.Functions.GetPlate(vehicle)) then return end
     if #(pos - GetEntityCoords(vehicle)) > 2.5 then return end
     if GetVehicleDoorLockStatus(vehicle) <= 0 then return end
-    local seconds = math.random(25,45)
+    local seconds = math.random(25,50)
     local circles = math.random(5,8)
 
     usingAdvanced = isAdvanced

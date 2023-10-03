@@ -12,6 +12,18 @@ local VehicleList = {}
 ---- Server Events ----
 -----------------------
 
+
+QBCore.Functions.CreateCallback('qb-vehiclekeys:server:GetVehicleKeys', function(source, cb)
+    local citizenid = QBCore.Functions.GetPlayer(source).PlayerData.citizenid
+    local keysList = {}
+    for plate, citizenids in pairs (VehicleList) do
+        if citizenids[citizenid] then
+            keysList[plate] = true
+        end
+    end
+    cb(keysList)
+end)
+
 -- Event to give keys. receiver can either be a single id, or a table of ids.
 -- Must already have keys to the vehicle, trigger the event from the server, or pass forcegive paramter as true.
 RegisterNetEvent('qb-vehiclekeys:server:GiveVehicleKeys', function(receiver, plate)
