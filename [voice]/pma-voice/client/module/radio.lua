@@ -204,6 +204,11 @@ RegisterCommand('-radiotalk', function()
 		TriggerServerEvent('InteractSound_SV:PlayOnSource', "01-off", 0.1)
 		if GetConvarInt('voice_enableRadioAnim', 0) == 1 then
 			StopAnimTask(PlayerPedId(), "random@arrests", "generic_radio_enter", -4.0)
+			ClearPedTasks(PlayerPedId())
+			if radioProp ~= 0 then
+				DeleteObject(radioProp)
+				radioProp = 0
+			end
 		end
 		TriggerServerEvent('pma-voice:setTalkingOnRadio', false)
 	end
