@@ -233,7 +233,7 @@ Config.ConsumablesDrink = {
     ["obobatea"] = math.random(15, 20),
     ["nekolatte"] = math.random(15, 20),
     ["catcoffee"] = math.random(20, 25),
-    ["miso"] = math.random(35, 45),
+    -- ["miso"] = math.random(35, 45),
     ["mocha"] = math.random(35, 45),
 }
 

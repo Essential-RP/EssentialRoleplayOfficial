@@ -68,7 +68,8 @@ CreateThread(function()
 			{ options = { { event = "jim-catcafe:washHands", icon = "fas fa-hand-holding-water", label = Loc[Config.Lan].target["hands"], coords = vec3(-570.25, -1056.98, 22.34), }, }, distance = 1.2 })
 	--Oven
 	Targets["CatOven"] =
-		exports['qb-target']:AddBoxZone("CatOven", vec3(-590.66, -1059.13, 22.34-1), 2.5, 0.6, { name="CatOven", heading = 0, debugPoly=Config.Debug, minZ = 19.84, maxZ = 23.84, },
+		exports['qb-target']:AddBoxZone("CatOven", vec3(-591.32, -1059.14, 22.34), 1.5, 2, { name="CatOven", heading = 270, debugPoly=Config.Debug,     minZ=19.74,
+		maxZ=23.74 },
 			{ options = { { event = "jim-catcafe:Crafting", icon = "fas fa-temperature-high", label = Loc[Config.Lan].target["oven"], job = loc.job, craftable = Crafting.Oven, header = Loc[Config.Lan].menu["header_oven"], coords = vec3(-590.66, -1059.13, 22.34), }, }, distance = 2.0 })
 	--Hob
 	Targets["CatHob"] =

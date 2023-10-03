@@ -119,21 +119,18 @@ RegisterNetEvent('police:client:SetOutVehicle', function()
 end)
 
 RegisterNetEvent('police:client:PutInVehicle', function()
-    local ped = PlayerPedId()
-    if isHandcuffed or isEscorted then
-        local vehicle = QBCore.Functions.GetClosestVehicle()
-        if DoesEntityExist(vehicle) then
-            for i = GetVehicleMaxNumberOfPassengers(vehicle), 0, -1 do
-                if IsVehicleSeatFree(vehicle, i) then
-                    isEscorted = false
-                    TriggerEvent('hospital:client:isEscorted', isEscorted)
-                    ClearPedTasks(ped)
-                    DetachEntity(ped, true, false)
-
-                    Wait(100)
-                    SetPedIntoVehicle(ped, vehicle, i)
-                    return
-                end
+    local vehicle, distance = QBCore.Functions.GetClosestVehicle()
+    if DoesEntityExist(vehicle) and distance < 4.2 then
+        for i = GetVehicleMaxNumberOfPassengers(vehicle), math.ceil(0, 2), -1 do
+            if IsVehicleSeatFree(vehicle, i) then
+                isEscorted = false
+                TriggerEvent('hospital:client:isEscorted', isEscorted)
+                ClearPedTasks(PlayerPedId())
+                DetachEntity(PlayerPedId(), true, false)
+                Wait(100)
+                SetPedIntoVehicle(PlayerPedId(), vehicle, i)
+                Wait(100)
+                return
             end
         end
     end
@@ -174,42 +171,62 @@ end)
 
 RegisterNetEvent('police:client:RobPlayer', function()
     local player, distance = QBCore.Functions.GetClosestPlayer()
+    local PlayerData = QBCore.Functions.GetPlayerData()
     local ped = PlayerPedId()
+    
     if player ~= -1 and distance < 2.5 then
         local playerPed = GetPlayerPed(player)
         local playerId = GetPlayerServerId(player)
+        
         QBCore.Functions.TriggerCallback('hospital:server:getStatus', function(status)
             print(status.lastStand)
-            if IsEntityPlayingAnim(playerPed, "missminuteman_1ig_2", "handsup_base", 3) or IsEntityPlayingAnim(playerPed, "mp_arresting", "idle", 3) or status.dead or (Config.RobInLastStand and status.lastStand) then
-                QBCore.Functions.Progressbar("robbing_player", Lang:t("progressbar.robbing"), math.random(5000, 7000), false, true, {
-                    disableMovement = true,
-                    disableCarMovement = true,
-                    disableMouse = false,
-                    disableCombat = true,
-                }, {
-                    animDict = "random@shop_robbery",
-                    anim = "robbery_action_b",
-                    flags = 16,
-                }, {}, {}, function() -- Done
-                    local plyCoords = GetEntityCoords(playerPed)
-                    local pos = GetEntityCoords(ped)
-                    if #(pos - plyCoords) < 2.5 then
+            
+            -- Check various conditions before attempting to rob the player
+            if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] 
+                and not isHandcuffed and not IsTiedUp and not isEscorted 
+                and not IsPedInAnyVehicle(PlayerPedId(), false) then
+                
+                if IsEntityPlayingAnim(playerPed, "missminuteman_1ig_2", "handsup_base", 3) 
+                    or IsEntityPlayingAnim(playerPed, "mp_arresting", "idle", 3) 
+                    or status.dead 
+                    or (Config.RobInLastStand and status.lastStand) then
+
+                    QBCore.Functions.Progressbar("robbing_player", Lang:t("progressbar.robbing"), math.random(5000, 7000), false, true, {
+                        disableMovement = true,
+                        disableCarMovement = true,
+                        disableMouse = false,
+                        disableCombat = true,
+                    }, {
+                        animDict = "random@shop_robbery",
+                        anim = "robbery_action_b",
+                        flags = 16,
+                    }, {}, {}, function() -- Done
+                        local plyCoords = GetEntityCoords(playerPed)
+                        local pos = GetEntityCoords(ped)
+
+                        if #(pos - plyCoords) < 2.5 then
+                            StopAnimTask(ped, "random@shop_robbery", "robbery_action_b", 1.0)
+                            TriggerServerEvent("inventory:server:OpenInventory", "otherplayer", playerId)
+                            TriggerEvent("inventory:server:RobPlayer", playerId)
+                        else
+                            QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
+                        end
+                    end, function() -- Cancel
                         StopAnimTask(ped, "random@shop_robbery", "robbery_action_b", 1.0)
-                        TriggerServerEvent("inventory:server:OpenInventory", "otherplayer", playerId)
-                        TriggerEvent("inventory:server:RobPlayer", playerId)
-                    else
-                        QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
-                    end
-                end, function() -- Cancel
-                    StopAnimTask(ped, "random@shop_robbery", "robbery_action_b", 1.0)
-                    QBCore.Functions.Notify(Lang:t("error.canceled"), "error")
-                end)
+                        QBCore.Functions.Notify(Lang:t("error.canceled"), "error")
+                    end)
+                end
             end
         end, playerId)
     else
         QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
     end
 end)
+
+
+
+
+
 
 RegisterNetEvent('police:client:JailPlayer', function()
     local player, distance = QBCore.Functions.GetClosestPlayer()
@@ -264,14 +281,81 @@ RegisterNetEvent('police:client:BillPlayer', function()
 end)
 
 RegisterNetEvent('police:client:PutPlayerInVehicle', function()
-    local player, distance = QBCore.Functions.GetClosestPlayer()
-    if player ~= -1 and distance < 2.5 then
-        local playerId = GetPlayerServerId(player)
-        if not isHandcuffed and not isEscorted then
-            TriggerServerEvent("police:server:PutPlayerInVehicle", playerId)
+    if not IsPedInAnyVehicle(PlayerPedId(), false) then
+        local player, distance = QBCore.Functions.GetClosestPlayer()
+        local vehicle, distance = QBCore.Functions.GetClosestVehicle()
+        local coords = GetEntityCoords(vehicle)
+        if DoesEntityExist(vehicle) and distance < 4.2 then
+            if GetVehicleDoorLockStatus(vehicle) == 2 then
+                exports['ps-ui']:Notify('this vehicle is locked', 'error')
+                return
+            end
+            local veiculo = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
+            if veiculo == 'STOCKADE' then
+                SetVehicleDoorsLocked(vehicle, 2)
+                FreezeEntityPosition(vehicle, true)
+                exports['ps-ui']:Notify('You need to blow the back open first', 'error')
+                return
+            elseif veiculo == 'PBUS' then
+                if GetIsPoliceJob(QBCore.Functions.GetPlayerData().job.name) then
+                else
+                    SetVehicleDoorsLocked(vehicle, 2)
+                    exports['ps-ui']:Notify('You need to be police to access this vehicle', 'error')
+                    return
+                end
+            end
+            for i = GetVehicleMaxNumberOfPassengers(vehicle), math.ceil(0, 2), -1 do
+                if IsVehicleSeatFree(vehicle, i) then
+                    if i == 2 then
+                        TaskOpenVehicleDoor(GetPlayerPed(-1),vehicle,3000,2,10)
+                        SetVehicleDoorShut(vehicle, 3, false)
+                        SetVehicleDoorShut(vehicle, 2, false)
+                    elseif i == 1 then
+                        TaskOpenVehicleDoor(GetPlayerPed(-1),vehicle,3000,1,10)
+                        SetVehicleDoorShut(vehicle, 3, false)
+                        SetVehicleDoorShut(vehicle, 2, false)
+                    elseif i == 3 then
+                        TaskOpenVehicleDoor(GetPlayerPed(-1),vehicle,3000,1,10)
+                        SetVehicleDoorShut(vehicle, 3, false)
+                        SetVehicleDoorShut(vehicle, 2, false)
+                    elseif i == -1 then
+                        TaskOpenVehicleDoor(GetPlayerPed(-1),vehicle,3000,-1,10)
+                        SetVehicleDoorShut(vehicle, 0, false)
+                        SetVehicleDoorShut(vehicle, 1, false)
+                    elseif i == 0 then
+                        TaskOpenVehicleDoor(GetPlayerPed(-1),vehicle,3000,0,10)
+                        SetVehicleDoorShut(vehicle, 0, false)
+                        SetVehicleDoorShut(vehicle, 1, false)
+                    end
+                    QBCore.Functions.Progressbar("vehicleplace", "placing in vehicle..", 4500, false, true, {
+                        disableMovement = true,
+                        disableCarMovement = true,
+                        disableMouse = false,
+                        disableCombat = true,
+                    }, {}, {}, {}, function() -- Done
+                        local playerId = GetPlayerServerId(player)
+                        TriggerServerEvent("police:server:PutPlayerInVehicle", playerId)
+                        if i == 2 then
+                            SetVehicleDoorShut(vehicle, 3, false)
+                            SetVehicleDoorShut(vehicle, 2, false)
+                        elseif i == 1 then
+                            SetVehicleDoorShut(vehicle, 3, false)
+                            SetVehicleDoorShut(vehicle, 2, false)
+                        elseif i == -1 then
+                            SetVehicleDoorShut(vehicle, 0, false)
+                            SetVehicleDoorShut(vehicle, 1, false)
+                        elseif i == 0 then
+                            SetVehicleDoorShut(vehicle, 0, false)
+                            SetVehicleDoorShut(vehicle, 1, false)
+                        end
+                        return
+                    end, function() -- Cancel
+                        exports['ps-ui']:Notify("canceled", "error")
+                    end)
+                    return
+                end
+            end
         end
-    else
-        QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
     end
 end)
 
@@ -279,34 +363,43 @@ RegisterNetEvent('police:client:SetPlayerOutVehicle', function()
     local player, distance = QBCore.Functions.GetClosestPlayer()
     if player ~= -1 and distance < 2.5 then
         local playerId = GetPlayerServerId(player)
-        if not isHandcuffed and not isEscorted then
-            TriggerServerEvent("police:server:SetPlayerOutVehicle", playerId)
-        end
-    else
-        QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
+        TriggerServerEvent("police:server:SetPlayerOutVehicle", playerId)
+        TriggerServerEvent("police:server:EscortPlayer", playerId)
     end
 end)
 
 
 RegisterNetEvent('police:client:EscortPlayer', function()
     local player, distance = QBCore.Functions.GetClosestPlayer()
-    local ped = PlayerId()
-    if player ~= -1 and distance < 1.0 then
-        local playerId = GetPlayerServerId(player)
-        local playerPed = GetPlayerServerId(ped)
-        if not isEscorted then
-            if not IsTargetDead(playerPed) then
-                TriggerServerEvent("police:server:EscortPlayer", playerId)
+    local PlayerData = QBCore.Functions.GetPlayerData()
+    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] and not isHandcuffed and not IsTiedUp and not isEscorted and not IsPedInAnyVehicle(PlayerPedId(), false) then
+        if player ~= -1 and distance < 2.5 then
+            if IsPedInAnyVehicle(GetPlayerPed(player)) and not IsPedOnAnyBike(GetPlayerPed(player)) then
+                local vehicle = GetVehiclePedIsIn(GetPlayerPed(player))
+                local coords = GetEntityCoords(vehicle)
+                if vehicle ~= nil then
+                    if GetVehicleDoorLockStatus(vehicle) == 2 then
+                        exports['ps-ui']:Notify('this vehicle is locked', 'error')
+                        return
+                    end
+                end
+                TaskOpenVehicleDoor(GetPlayerPed(-1),vehicle,3000,1,10)
+                QBCore.Functions.Progressbar("pullfromvehicle", "Pulling Out Of Vehicle..", 4500, false, true, {
+                    disableMovement = true,
+                    disableCarMovement = true,
+                    disableMouse = false,
+                    disableCombat = true,
+                }, {}, {}, {}, function() -- Done
+                    local playerId = GetPlayerServerId(player)
+                    TriggerServerEvent("police:server:EscortPlayer", playerId)
+                end, function() -- Cancel
+                    exports['ps-ui']:Notify("canceled", "error")
+                end)
             else
-                QBCore.Functions.Notify('You cannot escort someone while being escorted or dead!', "error")
-                return
+                local playerId = GetPlayerServerId(player)
+                TriggerServerEvent("police:server:EscortPlayer", playerId)
             end
-        else
-            QBCore.Functions.Notify('You cannot escort someone while being escorted or dead!', "error")
-            return
         end
-    else
-        QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
     end
 end)
 

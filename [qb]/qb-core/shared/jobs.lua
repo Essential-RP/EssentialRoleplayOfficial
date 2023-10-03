@@ -381,11 +381,11 @@ QBShared.Jobs = {
 		label = 'Cat Cafe',
 		defaultDuty = true,
 		grades = {
-            ['0'] = { name = 'Recruit', payment = 50 },
-			['1'] = { name = 'Novice', payment = 75 },
-			['2'] = { name = 'Experienced', payment = 100 },
-			['3'] = { name = 'Advanced', payment = 125 },
-			['4'] = { name = 'Manager', isboss = true, payment = 150 },
+            ['0'] = { name = 'Recruit', payment = 750 },
+			['1'] = { name = 'Novice', payment = 1000 },
+			['2'] = { name = 'Experienced', payment = 1200 },
+			['3'] = { name = 'Advanced', payment = 1300 },
+			['4'] = { name = 'Manager', isboss = true, payment = 1500 },
         },
     },
 	['hotdog'] = {

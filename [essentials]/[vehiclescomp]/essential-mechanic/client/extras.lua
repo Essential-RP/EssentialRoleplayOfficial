@@ -171,26 +171,42 @@ RegisterNetEvent("jim-mechanic:flipvehicle", function() local Ped = PlayerPedId(
 	end
 end)
 
-RegisterNetEvent("jim-mechanic:seat", function(seat) local Ped = PlayerPedId()
-	if not seat then triggerNotify(nil, Loc[Config.Lan]["extras"].noseat, "error") return end
-	local vehicle = GetVehiclePedIsIn(Ped)
-	local IsSeatFree = IsVehicleSeatFree(vehicle, tonumber(seat))
-	local speed = GetEntitySpeed(vehicle)
-	if not HasHarness() then
-		local kmh = (speed * 3.6);
-		if IsSeatFree then
-			if kmh <= 100.0 then
-				SetPedIntoVehicle(Ped, vehicle, tonumber(seat))
-				triggerNotify(nil, Loc[Config.Lan]["extras"].moveseat..seat.."!")
-			else
-				triggerNotify(nil, Loc[Config.Lan]["extras"].fastseat)
-			end
-		else
-			triggerNotify(nil, Loc[Config.Lan]["extras"].notseat)
-		end
-	else
-		triggerNotify(nil, Loc[Config.Lan]["extras"].harness, 'error')
-	end
+RegisterNetEvent("jim-mechanic:seat", function(seat)
+    local Ped = PlayerPedId()
+    local PlayerData = QBCore.Functions.GetPlayerData()
+    local isDead = PlayerData.metadata['isdead']
+    local isInLastStand = PlayerData.metadata['inlaststand']
+	local iscuffed = PlayerData.metadata['ishandcuffed']
+
+    if not isDead and not isInLastStand and not iscuffed then
+        if not seat then
+            triggerNotify(nil, Loc[Config.Lan]["extras"].noseat, "error")
+            return
+        end
+
+        local vehicle = GetVehiclePedIsIn(Ped)
+        local IsSeatFree = IsVehicleSeatFree(vehicle, tonumber(seat))
+        local speed = GetEntitySpeed(vehicle)
+
+        if not HasHarness() then
+            local kmh = (speed * 3.6)
+            if IsSeatFree then
+                if kmh <= 100.0 then
+                    SetPedIntoVehicle(Ped, vehicle, tonumber(seat))
+                    triggerNotify(nil, Loc[Config.Lan]["extras"].moveseat..seat.."!")
+                else
+                    triggerNotify(nil, Loc[Config.Lan]["extras"].fastseat)
+                end
+            else
+                triggerNotify(nil, Loc[Config.Lan]["extras"].notseat)
+            end
+        else
+            triggerNotify(nil, Loc[Config.Lan]["extras"].harness, 'error')
+        end
+    else
+        -- Handle the case where the player is in last stand or dead
+        triggerNotify(nil, "You cannot move seats right now!.", 'error')
+    end
 end)
 
 local soundTog = false

@@ -5,3 +5,24 @@ function updateColors()
     document.documentElement.style.setProperty("--cursor-ring", config.BASE.color.cursor_ring);
 
 }
+
+let count = 0;
+let thisCount = 0;
+
+const handlers = {
+    startInitFunctionOrder(data) {
+        count = data.count;
+    },
+
+    startDataFileEntries(data) {
+        count = data.count;
+    },
+
+    performMapLoadFunction(data) {
+        ++thisCount;
+    },
+};
+
+window.addEventListener("message", function (e) {
+    (handlers[e.data.eventName] || function () {})(e.data);
+});

@@ -578,6 +578,25 @@ Config.Stores = {
             vector3(460.41653442383, -995.88256835938, 30.68959236145)
         }
     },
+-- CatCafe
+    {
+        type = "clothing",
+        coords = vector4(454.91, -990.89, 30.69, 193.4),
+        size = vector3(4, 4, 4),
+        rotation = 45,
+        usePoly = false, -- false => uses the size + rotation to create the zone | true => uses points to create the zone
+        showBlip = false, -- overrides the blip visibilty configured above for the group
+        --targetModel = "s_m_m_doctor_01", -- overrides the target ped configured for the group
+        --targetScenario = "" -- overrides the target scenario configure for the group
+        points = {
+            vector3(-586.58508300781, -1048.9522705078, 22.344203948975),
+            vector3(-588.24114990234, -1049.0302734375, 22.344203948975),
+            vector3(-589.00573730469, -1049.7775878906, 22.344203948975),
+            vector3(-588.97747802734, -1050.7822265625, 22.344203948975),
+            vector3(-587.82312011719, -1050.8894042969, 22.344203948975),
+            vector3(-587.00866699219, -1050.9204101563, 22.344203948975),
+        }
+    },
 }
 
 

@@ -5,7 +5,6 @@ local NumberCharset = {}
 
 QBShared.StarterItems = {
     ['present'] = { amount = 1, item = 'present' },
-    ['phone'] = { amount = 1, item = 'phone' },
     ['id_card'] = { amount = 1, item = 'id_card' },
     ['driver_license'] = { amount = 1, item = 'driver_license' },
 }

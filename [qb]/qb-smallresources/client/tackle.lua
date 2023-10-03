@@ -18,10 +18,13 @@ local function TackleAnim()
 end
 local function Tackle()
     closestPlayer, distance = QBCore.Functions.GetClosestPlayer()
+    local PlayerData = QBCore.Functions.GetPlayerData()
     local closestPlayerPed = GetPlayerPed(closestPlayer)
+    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] and not PlayerData.metadata['ishandcuffed'] and not IsTiedUp and not isEscorted and not IsPedInAnyVehicle(PlayerPedId(), false) then
     if(distance ~= -1 and distance < 2) then
         TriggerServerEvent("tackle:server:TacklePlayer", GetPlayerServerId(closestPlayer))
         TackleAnim()
+        end
     end
 end
 RegisterKeyMapping('tackle', 'Tackle someone', 'keyboard', "G")

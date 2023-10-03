@@ -705,21 +705,30 @@ RegisterNetEvent('police:server:KidnapPlayer', function(playerId)
     end
 end)
 
-RegisterNetEvent('police:server:SetPlayerOutVehicle', function(playerId)
-    local src = source
-    local playerPed = GetPlayerPed(src)
-    local targetPed = GetPlayerPed(playerId)
-    local playerCoords = GetEntityCoords(playerPed)
-    local targetCoords = GetEntityCoords(targetPed)
-    -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
+-- RegisterNetEvent('police:server:SetPlayerOutVehicle', function(playerId)
+--     local src = source
+--     local playerPed = GetPlayerPed(src)
+--     local targetPed = GetPlayerPed(playerId)
+--     local playerCoords = GetEntityCoords(playerPed)
+--     local targetCoords = GetEntityCoords(targetPed)
+--     -- if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
-    local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
-    if not QBCore.Functions.GetPlayer(src) or not EscortPlayer then return end
+--     local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
+--     if not QBCore.Functions.GetPlayer(src) or not EscortPlayer then return end
 
-    if EscortPlayer.PlayerData.metadata["ishandcuffed"] or EscortPlayer.PlayerData.metadata["isdead"] then
-        TriggerClientEvent("police:client:SetOutVehicle", EscortPlayer.PlayerData.source)
-    else
-        TriggerClientEvent('QBCore:Notify', src, Lang:t("error.not_cuffed_dead"), 'error')
+--     if EscortPlayer.PlayerData.metadata["inlaststand"] or EscortPlayer.PlayerData.metadata["isdead"] or EscortPlayer.PlayerData.metadata["ishandcuffed"] then
+--         TriggerClientEvent("police:client:SetOutVehicle", EscortPlayer.PlayerData.source)
+--     else
+--         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.not_cuffed_dead"), 'error')
+--     end
+-- end)
+
+RegisterNetEvent('police:client:SetPlayerOutVehicle', function()
+    local player, distance = QBCore.Functions.GetClosestPlayer()
+    if player ~= -1 and distance < 2.5 then
+        local playerId = GetPlayerServerId(player)
+        TriggerServerEvent("police:server:SetPlayerOutVehicle", playerId)
+        TriggerServerEvent("police:server:EscortPlayer", playerId)
     end
 end)
 
@@ -734,7 +743,7 @@ RegisterNetEvent('police:server:PutPlayerInVehicle', function(playerId)
     local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
     if not QBCore.Functions.GetPlayer(src) or not EscortPlayer then return end
 
-    if EscortPlayer.PlayerData.metadata["ishandcuffed"] or EscortPlayer.PlayerData.metadata["isdead"] then
+    if EscortPlayer.PlayerData.metadata["inlaststand"] or EscortPlayer.PlayerData.metadata["isdead"] or EscortPlayer.PlayerData.metadata["ishandcuffed"] then
         TriggerClientEvent("police:client:PutInVehicle", EscortPlayer.PlayerData.source)
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.not_cuffed_dead"), 'error')

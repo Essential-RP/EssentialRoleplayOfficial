@@ -4,7 +4,7 @@ function Radial.Add(title, event)
     exports[Radial.ResourceName]:AddOption({
         id = Radial.MenuID,
         title = title,
-        icon = "shirt",
+        icon = "tshirt",
         type = "client",
         event = event,
         shouldClose = true

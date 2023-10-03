@@ -4,7 +4,7 @@ author 'Discord.gg/NCHub'
 
 loadscreen 'html/index.html'
 
--- loadscreen_manual_shutdown "yes"
+loadscreen_manual_shutdown "yes"
 
 loadscreen_cursor 'yes'
 
