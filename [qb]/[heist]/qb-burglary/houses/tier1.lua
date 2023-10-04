@@ -4,7 +4,7 @@ Config.T1_RequiredLvl = 1
 -- Set the T1 circle / ps-circle minigame difficulty - https://github.com/Nathan-FiveM/qb-lock
 Config.T1_Difficulty = {
     ["circles"] = { 3, 4 }, -- [1] = min, [2] = max
-    ["speed"] = { 10, 15 } -- [1] = min, [2] = max
+    ["speed"] = { 12, 18 } -- [1] = min, [2] = max
 }
 
 -- T1 house locations

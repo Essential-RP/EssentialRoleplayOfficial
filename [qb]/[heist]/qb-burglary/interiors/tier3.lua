@@ -427,7 +427,7 @@ Config.T3_Interiors = {
                 ["chance"] = { math.random(100), 75 },
                 ["animation"] = { "b_atm_mugging" },
                 ["animDict"] = { "random@atmrobberygen" },
-                ["weapon"] = { "WEAPON_PISTOL", "WEAPON_MICROSMG", "WEAPON_RAYPISTOL" }
+                ["weapon"] = { "WEAPON_PISTOL", "WEAPON_MICROSMG" }
             },
         },
         -- sneaky: Hiding spot locations

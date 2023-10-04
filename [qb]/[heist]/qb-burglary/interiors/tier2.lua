@@ -315,7 +315,7 @@ Config.T2_Interiors = {
                 ["chance"] = { math.random(100), 50 },
                 ["animation"] = { "idle_c" },
                 ["animDict"] = { "timetable@tracy@sleep@" },
-                ["weapon"] = { "", },
+                ["weapon"] = { "weapon_pistol", },
             },
             [2] = {
                 ["spawn"] = { vector4(350.67, -1008.25, -99.2 - 1.0, 90.64), },
