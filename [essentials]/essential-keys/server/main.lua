@@ -57,12 +57,10 @@ RegisterNetEvent('qb-vehiclekeys:server:breakLockpick', function(itemName)
     end
 end)
 
--- RegisterNetEvent('qb-vehiclekeys:server:plzwaitbro')
--- local vehicle = GetVehiclePedIsIn(ped)
--- local ped = PlayerPedId()
-
--- SetVehicleEngineOn(vehicle, false, false, true
+-- RegisterNetEvent('qb-vehiclekeys:server:setVehLockState', function(vehNetId, state)
+--     SetVehicleDoorsLocked(NetworkGetEntityFromNetworkId(vehNetId), state)
 -- end)
+
 
 -----------------------
 ----   Functions   ----
