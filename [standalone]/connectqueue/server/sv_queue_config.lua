@@ -69,14 +69,14 @@ Config.Language = {
 }
 
 Config.enableDiscordWhitelist = false -- For Enable Whitelist System
-Config.discordServerGuild = "" -- Discord Server ID to check it if player is in the server
-Config.discordBotToken = ""  -- Discord Token Bot - You Can Create at https://discord.com/developers/applications
+Config.discordServerGuild = "989284752953606184" -- Discord Server ID to check it if player is in the server
+Config.discordBotToken = "MTEzNjU5MzYyOTAyNTE0ODk1OA.GjhxdG.G0RSi6ui_8KrGfJSdjdA6JjfQqr5GXE7ZBFSIs"  -- Discord Token Bot - You Can Create at https://discord.com/developers/applications
 
 
 Config.Roles = {
-	owner = {
-		roleID = "", --Role ID
-		point = 15,  -- any bigger point can push player on the first row of queue
+	community = {
+		roleID = "989284752953606187", --Role ID
+		point = 0,  -- any bigger point can push player on the first row of queue
 	},
     -- vip = {
 	-- 	roleID = "", --Role ID

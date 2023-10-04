@@ -7,7 +7,7 @@ Config.VehicleBlowUp = true -- When true, there will be a configurable chance of
 Config.BlowUpChance = 5 -- Percentage for Chance of Engine Explosion (Default: 5% or 5)
 Config.CostMultiplier = 3 -- Amount to multiply 1 by. This indicates fuel price. (Default: $3.0/l or 3.0)
 Config.GlobalTax = 15.0 -- The tax, in %, that people will be charged at the pump. (Default: 15% or 15.0)
-Config.FuelNozzleExplosion = true -- When true, it enables the fuel pump exploding when players run away with the nozzle. Highly recommeded to be false.
+Config.FuelNozzleExplosion = false -- When true, it enables the fuel pump exploding when players run away with the nozzle. Highly recommeded to be false.
 Config.FuelDecor = "_FUEL_LEVEL" -- Do not touch! (Default: "_FUEL_LEVEL")
 Config.RefuelTime = 600 -- Highly recommended to leave at 600. This value will be multiplied times the amount the player is fueling for the progress bar and cancellation logic! DON'T GO BELOW 250, performance WILL drop!
 Config.FuelTargetExport = false -- DO NOT USE WITH OX_TARGET! This is only used to fix this qb-target issue: https://github.com/CodineDev/cdn-fuel/issues/3. <br> <br> If you don't have this issue and haven't installed this exports in qb-target, then this should be false. Otherwise there will be an error.
@@ -58,7 +58,7 @@ Config.Ox = {
     Progress = false -- Uses Ox ProgressBar instead of progressbar.
 }
 Config.TargetResource = "qb-target" -- Supported: { 'qb-target', 'ox_target'} -- Others must use the same format as QB-Target or manual configuration is required.
-Config.PumpHose = true -- If true, it creates a hose from the pump to the nozzle the client is holding, to give it a more realistic feel.
+Config.PumpHose = false -- If true, it creates a hose from the pump to the nozzle the client is holding, to give it a more realistic feel.
 Config.RopeType = { -- Options: 1-2-3-4-5; 1: Khaki Color, Kind of Thick, 2: Very Thick Khaki Rope, 3: Very Thick Black Rope, 4: Very Thin Black Rope, 5: Same as 3
     ['fuel'] = 1,
     ['electric'] = 1,
@@ -77,7 +77,7 @@ Config.VehicleShutoffOnLowFuel = { -- If enabled, vehicles will turn off when th
 -- 2.1.0 End
 
 -- Phone --
-Config.RenewedPhonePayment = true -- Enables use of Renewed-Phone Payment System and Notifications
+Config.RenewedPhonePayment = false -- Enables use of Renewed-Phone Payment System and Notifications
 
 -- Syphoning --
 Config.UseSyphoning = false -- Follow the Syphoning Install Guide to enable this option!
@@ -120,25 +120,58 @@ Config.OneStationPerPerson = true -- This prevents players that already own one 
 --- Electric Vehicles
 Config.ElectricVehicleCharging = true -- When true, electric vehicles will actually consume resources and decrease 'Fuel / Battery' while driving. This means players will have to recharge their vehicle!
 Config.ElectricChargingPrice = 4 -- Per "KW". This value is multiplied times the amount of electricity someone put into their vehicle, to constitute the final cost of the charge. Players whom own the gas station will not recieve the money from electric charging.
-Config.ElectricVehicles = { -- The list of Electric Vehicles in the base game. You can add more if needed, use the Vehicle's Spawn Name
-    "surge",
-    "iwagen",
-    "voltic",
-    "voltic2",
-    "raiden",
-    "cyclone",
-    "tezeract",
-    "neon",
-    "omnisegt",
-    "iwagen",
-    "caddy",
-    "caddy2",
-    "caddy3",
-    "airtug",
-    "rcbandito",
-    "imorgon",
-    "dilettante",
-    "khamelion",
+Config.ElectricVehicles = { -- List of Electric Vehicles in the Base Game.
+    ["surge"] = {
+        isElectric = true,
+    },
+    ["iwagen"] = {
+        isElectric = true,
+    },
+    ["voltic"] = {
+        isElectric = true,
+    },
+    ["voltic2"] = {
+        isElectric = true,
+    },
+    ["raiden"] = {
+        isElectric = true,
+    },
+    ["cyclone"] = {
+        isElectric = true,
+    },
+    ["tezeract"] = {
+        isElectric = true,
+    },
+    ["neon"] = {
+        isElectric = true,
+    },
+    ["omnisegt"] = {
+        isElectric = true,
+    },
+    ["caddy"] = {
+        isElectric = true,
+    },
+    ["caddy2"] = {
+        isElectric = true,
+    },
+    ["caddy3"] = {
+        isElectric = true,
+    },
+    ["airtug"] = {
+        isElectric = true,
+    },
+    ["rcbandito"] = {
+        isElectric = true,
+    },
+    ["imorgon"] = {
+        isElectric = true,
+    },
+    ["dilettante"] = {
+        isElectric = true,
+    },
+    ["khamelion"] = {
+        isElectric = true,
+    },
 }
 Config.ElectricSprite = 620 -- This is for when the player is in an electric charger, the blips with change to this sprite. (Sprite with a car with a bolt going through it: 620)
 Config.ElectricChargerModel = true -- If you wish, you can set this to false to add your own props, or use a ymap for the props instead.
@@ -146,7 +179,9 @@ Config.ElectricChargerModel = true -- If you wish, you can set this to false to 
 -- Basic Configuration Settings
 -- Turn on Config.FuelDebug and use this command to get the name for here: getVehNameForBlacklist
 Config.NoFuelUsage = { -- This is for you to put vehicles that you don't want to use fuel.
-    "bmx",
+    ["bmx"] = {
+        blacklisted = true
+    },
 }
 
 Config.Classes = { -- Class multipliers. If you want SUVs to use less fuel, you can change it to anything under 1.0, and vise versa.
