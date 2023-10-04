@@ -483,13 +483,6 @@ Config.JobInteractions = {
                 type = 'client',
                 event = 'police:client:EscortPlayer',
                 shouldClose = true
-            }, {
-                id = 'Fingerprint',
-                title = 'Fingerprint',
-                icon = 'fingerprint',
-                type = 'client',
-                event = 'qb-police:client:scanFingerPrint',
-                shouldClose = true
             }, 
             {
                 id = 'GSR',
