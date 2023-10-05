@@ -61,7 +61,7 @@ Config.MaxTime = 23
 Config.JobWaitTime = { 2, 5 } -- [1] = min seconds, [2] = max seconds
 
 -- Set how long the player has to complete the job after entry (seconds)
-Config.JobTime = { 60, 120 } -- [1] = min seconds, [2] = max seconds
+Config.JobTime = { 900, 1200 } -- [1] = min seconds, [2] = max seconds
 
 -- If true the player will be emailed a job offer using qb-phone, the offer must be accepted
 -- If false the player will be notified via QB.Notify or the notify resource you are using
