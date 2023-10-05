@@ -350,35 +350,29 @@ function ToggleVehicleLocks(veh)
         if not isBlacklistedVehicle(veh) then
             if HasKeys(QBCore.Functions.GetPlate(veh)) then
                 local ped = PlayerPedId()
-                local inVeh = IsPedInAnyVehicle(ped)
                 local vehLockStatus = GetVehicleDoorLockStatus(veh)
 
                 loadAnimDict("anim@mp_player_intmenu@key_fob@")
                 TaskPlayAnim(ped, 'anim@mp_player_intmenu@key_fob@', 'fob_click', 3.0, 3.0, -1, 49, 0, false, false, false)
 
-                if vehLockStatus == 1 or vehLockStatus == 0 then
-                    Wait(750)
-                    ClearPedTasks(ped)
-                    TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 5, "lock", 0.3)
+                TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 5, "lock", 0.3)
+
+                NetworkRequestControlOfEntity(veh)
+                if vehLockStatus == 1 then
                     SetVehicleDoorsLocked(veh, 2)
-                    SetVehicleDoorsLockedForPlayer(veh, PlayerId(), false)
-                    SetVehicleDoorsLockedForAllPlayers(veh, false)
                     QBCore.Functions.Notify(Lang:t("notify.vlock"), "primary")
                 else
-                    Wait(750)
-                    ClearPedTasks(ped)
-                    TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 5, "unlock", 0.3)
                     SetVehicleDoorsLocked(veh, 1)
                     QBCore.Functions.Notify(Lang:t("notify.vunlock"), "success")
                 end
 
-                if not inVeh then 
                 SetVehicleLights(veh, 2)
                 Wait(250)
                 SetVehicleLights(veh, 1)
                 Wait(200)
                 SetVehicleLights(veh, 0)
                 Wait(300)
+                ClearPedTasks(ped)
             else
                 QBCore.Functions.Notify(Lang:t("notify.ydhk"), 'error')
             end
