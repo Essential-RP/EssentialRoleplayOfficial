@@ -58,7 +58,7 @@ Config.MinTime = 5
 Config.MaxTime = 23
 
 -- Set how long it takes for the player to receive a job (seconds)
-Config.JobWaitTime = { 2, 5 } -- [1] = min seconds, [2] = max seconds
+Config.JobWaitTime = { 60, 120 } -- [1] = min seconds, [2] = max seconds
 
 -- Set how long the player has to complete the job after entry (seconds)
 Config.JobTime = { 900, 1200 } -- [1] = min seconds, [2] = max seconds
@@ -258,7 +258,7 @@ Config.Prompts = {
     ["bossman6"] = "The bossman will get back to you asap",
     ["requestjob1"] = "Request a job",
     ["requestjob2"] = "Already in a job",
-    ["requested1"] = "Requested job, you have been added to the queue the boss will notify you soon",
+    ["requested1"] = "Requested job, you have been added to the queue the boss will notify you soon! Be patient",
     ["requested2"] = "Already requested job",
     ["requested3"] = "You have received a job offer from the boss. Are you interested?",
     ["requested4"] = "You got the job! The area has been marked check your GPS.",
