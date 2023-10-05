@@ -17,17 +17,15 @@ Config.Route = {
 
 Config.StopsAmt = {
     ["small"] = {min = 2, max = 2},
-    ["medium"] = {min = 3, max = 3},
-    ["large"] = {min = 4, max = 6},
+    -- ["medium"] = {min = 3, max = 3},
+    -- ["large"] = {min = 4, max = 6},
 }
+
+Config.GarbageReward = { min = 1500, max = 2500} -- Cash reward for completing a garbagerun
 
 Config.MaterialTicket = true -- Enable or disable MaterialTickets and trades
 Config.Trade = {
-    ["metalscrap"] = 35, -- Name of the material, the amount of materials the player will get for 1 ticket
-    ["steel"] = 35,
-    ["glass"] = 35,
-    ["rubber"] = 35,
-    ["iron"] = 35
+    ["recyclable_material"] = 164, -- Name of the material, the amount of materials the player will get for 1 ticket
 }
 
 Config.PedLocation = vector4(-349.98, -1569.94, 25.22, 297.6)

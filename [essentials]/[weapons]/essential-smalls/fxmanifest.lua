@@ -8,6 +8,10 @@ ui_page 'money/money.html'
 server_script "sv_main.lua"
 client_script "cl_main.lua"
 
+shared_scripts {
+	'/shared/config.lua',
+}
+
 files {
   'money/money.html',
   'money/money.css',

@@ -1,8 +1,8 @@
-w-- If Config.Reputation = true the player must reach this level to unlock T2 houses
+-- If Config.Reputation = true the player must reach this level to unlock T2 houses
 Config.T2_RequiredLvl = 5
 
 -- If Config.Reputation = false set the chance of the player receiving a T2 house
-Config.T2_HouseChance = 30
+Config.T2_HouseChance = 40
 
 -- Set the T2 circle / ps-circle minigame difficulty - https://github.com/Nathan-FiveM/qb-lock
 Config.T2_Difficulty = {

@@ -55,3 +55,24 @@ exports['qb-target']:AddBoxZone("Troopersbossmenu",vector3(463.28903198242, -988
     },
     distance = 8
 })
+
+
+-- Keybindings
+
+RegisterKeyMapping('escort', 'Escort Player', 'keyboard', Config.Escort)
+RegisterKeyMapping('putinvehicle', 'Put In Vehicle', 'keyboard', Config.Putinvehicle)
+RegisterKeyMapping('cuffplayer', 'Cuff Player', 'keyboard', Config.Cuff)
+
+
+RegisterCommand('escort', function()
+    TriggerEvent("police:client:EscortPlayer")
+end, false)
+
+RegisterCommand('putinvehicle', function()
+    TriggerEvent("police:client:PutPlayerInVehicle")
+end, false)
+
+RegisterCommand('cuffplayer', function()
+    TriggerEvent("police:client:CuffPlayerSoft")
+end, false)
+

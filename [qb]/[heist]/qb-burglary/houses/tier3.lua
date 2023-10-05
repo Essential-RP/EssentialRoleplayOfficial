@@ -2,7 +2,7 @@
 Config.T3_RequiredLvl = 7
 
 -- If Config.Reputation = false set the chance of the player receiving a T3 house
-Config.T3_HouseChance = 5
+Config.T3_HouseChance = 20
 
 -- Set the T3 circle / ps-circle minigame difficulty - https://github.com/Nathan-FiveM/qb-lock
 Config.T3_Difficulty = {

@@ -38,7 +38,7 @@ Config.PriceBrackets = {
 -- The amount of groups stacks the Config.Deliver so if it's a 2-man job it's then 8, 16 per location 3 would be 16, 32, etc.
 Config.Deliver = {min = 4, max = 8} -- How many garbage bags per location?
 Config.MaxDeliver = 16 -- How many MAXIMUM garbage bags per location?
-Config.MaterialCheck = 8 -- How many trash bags each person MUST turning in to receive a ticket 8 = 1 ticket, scales with group so if it's a 4-man group they need to turn in 32 and they will all receive 1 ticket
+-- Config.MaterialCheck = 8 -- How many trash bags each person MUST turning in to receive a ticket 8 = 1 ticket, scales with group so if it's a 4-man group they need to turn in 32 and they will all receive 1 ticket
 
 Config.GroupLimit = 4 -- Increase the group limit to 4 people
 Config.GroupPay = 1.10 -- How much more you get paid for doing a group run (10% more)

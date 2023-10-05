@@ -23,25 +23,26 @@ RegisterNetEvent('essential-garbage:client:clientChecks', function(data)
     TriggerServerEvent('essential-garbage:server:StartJob', data.size, coords)
 end)
 
--- RegisterNetEvent('essential-garbage:client:MaterialTrade', function()
---     local menu = {}
---     local hasItem = QBCore.Functions.HasItem("matticket")
+RegisterNetEvent('essential-garbage:client:MaterialTrade', function()
+    local menu = {}
+    local hasItem = QBCore.Functions.HasItem("matticket")
 
---     for k, v in pairs(Config.Trade) do
---         menu[#menu+1] = {
---             header = ("Trade 1x voucher for %s %s"):format(v, QBCore.Shared.Items[k].label),
---             icon = "fa-solid fa-recycle",
---             disabled = not hasItem,
---             params = {
---                 isServer = true,
---                 event = "essential-garbage:server:MaterialTrade",
---                 args = k,
---             }
---         }
---     end
+    for k, v in pairs(Config.Trade) do
+        menu[#menu+1] = {
+            header = ("Trade 1x voucher for %s %s"):format(v, QBCore.Shared.Items[k].label),
+            icon = "fa-solid fa-recycle",
+            disabled = not hasItem,
+            params = {
+                isServer = true,
+                event = "essential-garbage:server:MaterialTrade",
+                args = k,
+            }
+        }
+    end
+    
 
---     exports[Config.Menu]:openMenu(menu)
--- end)
+    exports[Config.Menu]:openMenu(menu)
+end)
 
 
 RegisterNetEvent('essential-garbage:client:RequestJob', function()
@@ -49,8 +50,9 @@ RegisterNetEvent('essential-garbage:client:RequestJob', function()
     local PlayerData = QBCore.Functions.GetPlayerData()
     local data = PlayerData.metadata["garbage"]
     menu[#menu+1] = {
-        header = "Small Route",
-        txt = ("Get a route with %s-%s Delivery Locations"):format(Config.StopsAmt["small"].min, Config.StopsAmt["small"].max),
+        header = " Quick Route",
+        -- txt = ("Get a route with %s-%s Delivery Locations"):format(Config.StopsAmt["small"].min, Config.StopsAmt["small"].max),
+        txt = ("Get a route with 2 Delivery Locations"):format(Config.StopsAmt["small"].min, Config.StopsAmt["small"].max),
         icon = "fa-solid fa-user",
         disabled = data and data < Config.Route["small"],
         params = {
@@ -60,30 +62,30 @@ RegisterNetEvent('essential-garbage:client:RequestJob', function()
             }
         }
     }
-    menu[#menu+1] = {
-        header = "Medium Route",
-        txt = ("Get a route with %s-%s Delivery Locations"):format(Config.StopsAmt["medium"].min, Config.StopsAmt["medium"].max),
-        icon = "fa-solid fa-user",
-        disabled = data and data < Config.Route["medium"],
-        params = {
-            event = "essential-garbage:client:clientChecks",
-            args = {
-                size = "medium",
-            }
-        }
-    }
-    menu[#menu+1] = {
-        header = "Large Route",
-        txt = ("Get a route with %s-%s Delivery Locations"):format(Config.StopsAmt["large"].min, Config.StopsAmt["large"].max),
-        icon = "fa-solid fa-user",
-        disabled = data and data < Config.Route["large"],
-        params = {
-            event = "essential-garbage:client:clientChecks",
-            args = {
-                size = "large",
-            }
-        }
-    }
+    -- menu[#menu+1] = {
+    --     header = "Medium Route",
+    --     txt = ("Get a route with %s-%s Delivery Locations"):format(Config.StopsAmt["medium"].min, Config.StopsAmt["medium"].max),
+    --     icon = "fa-solid fa-user",
+    --     disabled = data and data < Config.Route["medium"],
+    --     params = {
+    --         event = "essential-garbage:client:clientChecks",
+    --         args = {
+    --             size = "medium",
+    --         }
+    --     }
+    -- }
+    -- menu[#menu+1] = {
+    --     header = "Large Route",
+    --     txt = ("Get a route with %s-%s Delivery Locations"):format(Config.StopsAmt["large"].min, Config.StopsAmt["large"].max),
+    --     icon = "fa-solid fa-user",
+    --     disabled = data and data < Config.Route["large"],
+    --     params = {
+    --         event = "essential-garbage:client:clientChecks",
+    --         args = {
+    --             size = "large",
+    --         }
+    --     }
+    -- }
 
     exports[Config.Menu]:openMenu(menu)
 end)
@@ -118,16 +120,16 @@ RegisterNetEvent('essential-garbage:client:OpenMainMenu', function()
         }
     end
 
-    -- if Config.MaterialTicket then
-    --     menu[#menu+1] = {
-    --         header = "Trade Vouchers",
-    --         txt = "Trade your vouchers for some left over materials",
-    --         icon = "fa-solid fa-clipboard-list",
-    --         params = {
-    --             event = "essential-garbage:client:MaterialTrade",
-    --         }
-    --     }
-    -- end
+    if Config.MaterialTicket then
+        menu[#menu+1] = {
+            header = "Trade Vouchers",
+            txt = "Trade your vouchers for some left over materials",
+            icon = "fa-solid fa-clipboard-list",
+            params = {
+                event = "essential-garbage:client:MaterialTrade",
+            }
+        }
+    end
 
     menu[#menu+1] = {
         header = "Exit",

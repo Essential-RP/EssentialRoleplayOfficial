@@ -126,10 +126,10 @@ RegisterNetEvent('essential-garbage:server:CollectCheck', function()
     local m = exports['qb-phone']:getGroupMembers(group)
     local groupSize = exports['qb-phone']:getGroupSize(group)
     local buff = groupSize >= Config.GroupPayLimit and Config.GroupPay or 1.0
-    local pay = ((CurrentRuns[group].Delivered * Config.PriceBrackets[CurrentRuns[group].status]) * buff) / groupSize
+    local pay = math.random(Config.GarbageReward.min, Config.GarbageReward.max)
     local MetaData = CurrentRuns[group].Delivered / groupSize
 
-    local MaterialCheck = MetaData >= Config.MaterialCheck and math.floor(MetaData / Config.MaterialCheck) or 0
+    -- local MaterialCheck = MetaData >= Config.MaterialCheck and math.floor(MetaData / Config.MaterialCheck) or 0
 
     if not m then return end
     if pay > 0 then
@@ -145,9 +145,9 @@ RegisterNetEvent('essential-garbage:server:CollectCheck', function()
                 Player.Functions.SetMetaData('garbage', deliverData + MetaData)
                 Player.Functions.AddMoney("bank", final, "Sanitation")
 
-                if Config.MaterialTicket and MaterialCheck > 0 then
-                    if Player.Functions.AddItem('matticket', MaterialCheck) then
-                        TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items['matticket'], "add", MaterialCheck)
+                if Config.MaterialTicket then
+                    if Player.Functions.AddItem('matticket', 1) then
+                        TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items['matticket'], "add", 1)
                      end
                 end
 
@@ -202,6 +202,7 @@ RegisterNetEvent('essential-garbage:server:MaterialTrade', function(material)
         TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items['matticket'], "remove", 1)
     end
 end)
+
 
 QBCore.Functions.CreateCallback("essential-garbage:server:DeliverPackage", function(source, cb, Shop)
     local src = source
