@@ -405,15 +405,15 @@ Config.T3_Interiors = {
         },
         -- residents: Homeowner ped locations
         ["residents"] = {
+            -- [1] = {
+            --     ["spawn"] = { vector4(-851.91, 675.45, 149.79 - 1.0, 198.49), },
+            --     ["model"] = { "a_f_y_fitness_01", },
+            --     ["chance"] = { math.random(100), 75 },
+            --     ["animation"] = { "idle_c" },
+            --     ["animDict"] = { "timetable@tracy@sleep@" },
+            --     ["weapon"] = { "", },
+            -- },
             [1] = {
-                ["spawn"] = { vector4(-851.91, 675.45, 149.79 - 1.0, 198.49), },
-                ["model"] = { "a_f_y_fitness_01", },
-                ["chance"] = { math.random(100), 75 },
-                ["animation"] = { "idle_c" },
-                ["animDict"] = { "timetable@tracy@sleep@" },
-                ["weapon"] = { "", },
-            },
-            [2] = {
                 ["spawn"] = { vector4(-852.93, 675.78, 152.48 - 1.0, 132.94), },
                 ["model"] = { "a_m_m_beach_01", },
                 ["chance"] = { math.random(100), 75 },
@@ -421,13 +421,13 @@ Config.T3_Interiors = {
                 ["animDict"] = { "timetable@ron@ig_5_p3" },
                 ["weapon"] = { "WEAPON_BAT" }
             },
-            [3] = {
+            [2] = {
                 ["spawn"] = { vector4(-861.42, 698.82, 145.25 - 1.0, 263.68), },
                 ["model"] = { "a_m_y_vinewood_01", },
                 ["chance"] = { math.random(100), 75 },
                 ["animation"] = { "b_atm_mugging" },
                 ["animDict"] = { "random@atmrobberygen" },
-                ["weapon"] = { "WEAPON_PISTOL", "WEAPON_MICROSMG" }
+                ["weapon"] = { "WEAPON_PISTOL" }
             },
         },
         -- sneaky: Hiding spot locations

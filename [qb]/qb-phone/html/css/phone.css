@@ -4,7 +4,7 @@
     display: none;
     height: 100%;
     width: 100%;
-    background: #000000;
+    background: #2a2a2a;
     overflow: hidden;
 }
 
@@ -12,7 +12,7 @@
     display: none;
     height: 100%;
     width: 100%;
-    background: #000000;
+    background: #2a2a2a;
     overflow: hidden;
 }
 
@@ -94,7 +94,7 @@
     height: 100%;
     width: 100%;
     top: 4.0vh;
-    background: #2f2f30;
+    background: #2a2a2a;
 }
 
 #phone-recent-call-number{

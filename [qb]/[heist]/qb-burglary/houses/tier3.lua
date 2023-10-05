@@ -104,20 +104,16 @@ Config.T3_RequiredSafeCracker = "advancedlockpick"
 Config.T3_RewardItems = {
     ["common"] = { ["chance"] = 100, ["exp"] = { 125, 165 },
         [1] = {
-            ["item"] = "steel",
+            ["item"] = "diamond_necklace",
             ["amount"] = { 1, 2 },
         },
         [2] = {
-            ["item"] = "aluminum",
+            ["item"] = "goldchain",
             ["amount"] = { 1, 5 },
         },
         [3] = {
-            ["item"] = "metalscrap",
+            ["item"] = "pistol_ammo",
             ["amount"] = { 1, 5 },
-        },
-        [4] = {
-            ["item"] = "bandage",
-            ["amount"] = { 1, 2 },
         },
     },
     ["uncommon"] = { ["chance"] = 55, ["exp"] = { 165, 205 },
@@ -152,13 +148,17 @@ Config.T3_RewardItems = {
             ["amount"] = { 1, 4 },
         },
         [4] = {
+            ["item"] = "weapon_fnx45",
+            ["amount"] = { 1, 1 },
+        },
+        [5] = {
             ["item"] = "vpn",
             ["amount"] = { 1, 1 },
         },
     },
     ["noway"] = { ["chance"] = 15, ["exp"] = { 245, 285 },
         [1] = {
-            ["item"] = "weapon_fnx45",
+            ["item"] = "vpn",
             ["amount"] = { 1, 1 },
         },
         [2] = {

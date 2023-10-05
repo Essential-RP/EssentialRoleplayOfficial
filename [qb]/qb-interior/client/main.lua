@@ -32,7 +32,6 @@ end
 -- Starting Apartment
 
 local function CreateApartmentFurnished(spawn)    
-	doorHeading = 3.783712
 	local objects = {}
     local POIOffsets = {}
 	POIOffsets.exit = json.decode('{"z":-1.674706,"y":-3.639465,"x":-3.504150,"h":2.70}')       

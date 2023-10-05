@@ -1,3 +1,5 @@
+local QBCore = exports[Config.Core]:GetCoreObject()
+
 function GetFuel(vehicle)
 	return DecorGetFloat(vehicle, Config.FuelDecor)
 end
@@ -26,7 +28,7 @@ end
 
 function Comma_Value(amount)
 	local formatted = amount
-	while true do
+	while true do  
 	  formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
 	  if (k==0) then
 		break
@@ -48,18 +50,17 @@ function Round(num, numDecimalPlaces)
 end
 
 function GetCurrentVehicleType(vehicle)
-	if not vehicle then
+	if not vehicle then 
 		vehicle = GetVehiclePedIsIn(PlayerPedId(), true)
 	end
 	if not vehicle then return false end
-	local vehModel = GetEntityModel(vehicle)
-	local vehiclename = string.lower(GetDisplayNameFromVehicleModel(vehModel))
-
-	if Config.ElectricVehicles[vehiclename] and Config.ElectricVehicles[vehiclename].isElectric then
-		return 'electricvehicle'
-	else
-		return 'gasvehicle'
+	local vehiclename = GetEntityModel(vehicle)
+	for _, currentCar in pairs(Config.ElectricVehicles) do
+		if currentCar == vehiclename or joaat(currentCar) == vehiclename then
+		  	return 'electricvehicle'
+		end
 	end
+	return 'gasvehicle'
 end
 
 function CreateBlip(coords, label)
@@ -117,24 +118,31 @@ function IsPlayerNearVehicle()
 end
 
 function IsVehicleBlacklisted(veh)
-	if Config.FuelDebug then print("IsVehicleBlacklisted("..tostring(veh)..")") end
+	if Config.FuelDebug then print("checking if vehicle is blacklisted") end
 	if veh and veh ~= 0 then
 		veh = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(veh)))
-		if Config.FuelDebug then print("Vehicle: "..veh) end
+		if Config.FuelDebug then print(veh) end
 		-- Puts Vehicles In Blacklist if you have electric charging on.
 		if not Config.ElectricVehicleCharging then
-			if Config.ElectricVehicles[veh] and Config.ElectricVehicles[veh].isElectric then
-				if Config.FuelDebug then print("Vehicle: "..veh.." is in the Blacklist.") end
-				return true
+			for i = 1, #Config.ElectricVehicles, 1 do
+				local cur = Config.ElectricVehicles[i]
+				if cur == veh then
+					print("Vehicle: "..cur.." is in the Blacklist.")
+					return true
+				end
 			end
 		end
 
-		if Config.NoFuelUsage[veh] and Config.NoFuelUsage[veh].blacklisted then
-			if Config.FuelDebug then print("Vehicle: "..veh.." is in the Blacklist.") end
-			-- If the veh equals a vehicle in the list then return true.
-			return true
+		for i = 1, #Config.NoFuelUsage, 1 do
+			local cur = Config.NoFuelUsage[i]
+			if cur == veh then
+				if Config.FuelDebug then
+					print("Vehicle: "..cur.." is in the Blacklist.")
+				end
+				-- If the veh equals a vehicle in the list then return true.
+				return true
+			end
 		end
-
 		-- Default False
 		if Config.FuelDebug then print("Vehicle is not blacklisted.") end
 		return false
@@ -142,5 +150,4 @@ function IsVehicleBlacklisted(veh)
 		if Config.FuelDebug then print("veh is nil!") end
 		return false
 	end
-	-- return true
 end
