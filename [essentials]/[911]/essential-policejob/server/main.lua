@@ -218,13 +218,42 @@ QBCore.Commands.Add("clearcasings", Lang:t("commands.clear_casign"), {}, false, 
     end
 end)
 
-QBCore.Commands.Add("jail", Lang:t("commands.jail_player"), {}, false, function(source)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
-        TriggerClientEvent("police:client:JailPlayer", src)
+local timetowait = false
+QBCore.Commands.Add("jail", "Jail Player (Police Only)", {{name = "id", help = "Player ID"}, {name = "time", help = "Time they have to be in jail"}, {name = "fine", help = "Fine they have to pay"}}, true, function(source, args)
+    if not timetowait then
+        local src = source
+        local Player = QBCore.Functions.GetPlayer(src)
+        if (Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "bcso" or Player.PlayerData.job.name == "corrections") and Player.PlayerData.job.onduty then
+            local playerId = tonumber(args[1])
+            local OtherPlayer = QBCore.Functions.GetPlayer(playerId)
+            local Ply = QBCore.Functions.GetPlayer(tonumber(args[1]))
+            local time = tonumber(args[2])
+            local amount = tonumber(args[3])
+            local PdPay = amount * 0.1
+            local billed = QBCore.Functions.GetPlayer(tonumber(args[1]))
+            if OtherPlayer ~= nil then
+                if time > 0 and amount and amount >= 0 then
+                    TriggerClientEvent('Thx-mugshot:client:trigger', args[1], playerId, time)
+                    -- TriggerClientEvent("police:client:JailCommand", src, playerId, time)
+                    Ply.Functions.RemoveMoney('bank', amount, "paid-fine")
+                    TriggerClientEvent('QBCore:Notify', src, 'Fine has been issued to offender succesfully', 'success')
+                    TriggerClientEvent('QBCore:Notify', billed.PlayerData.source, 'State Debt Recovery has automatically recovered the fines owed...')
+                    TriggerEvent('qb-bossmenu:server:addAccountMoney', 'police', PdPay)
+                    TriggerEvent('qb-log:server:CreateLog', 'jail', "Officer " .. Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname .. ' jailed ' .. OtherPlayer.PlayerData.charinfo.firstname .. " " .. OtherPlayer.PlayerData.charinfo.lastname .. " " .. "for " .. time .. " months and a $" .. amount .." fine")
+                    timetowait = true
+                    Wait(25000)
+                    timetowait = false
+                else
+                    TriggerClientEvent('QBCore:Notify', src, 'Cannot sentence for 0', 'error')
+                end
+            else
+                TriggerClientEvent("QBCore:Notify", source, "no one is present", "error")
+            end
+        else
+            TriggerClientEvent('QBCore:Notify', src, 'For on-duty police only', 'error')
+        end
     else
-        TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
+        TriggerClientEvent('QBCore:Notify', src, 'You need to wait for the other suspect to finish getting there mug shot', 'error')
     end
 end)
 

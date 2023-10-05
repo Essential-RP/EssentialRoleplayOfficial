@@ -347,7 +347,6 @@ RegisterNetEvent('police:client:ImpoundVehicle', function()
                 name = "price", -- name of the input should be unique otherwise it might override
                 type = "number", -- type of the input - number will not allow non-number characters in the field so only accepts 0-9
                 isRequired = true, -- Optional [accepted values: true | false] but will submit the form if no value is inputted
-                default = 0, -- Default number option, this is optional
             }
         }
     })
@@ -412,7 +411,6 @@ RegisterNetEvent('police:client:SeizeVehicle', function(fullImpound)
                 name = "price", -- name of the input should be unique otherwise it might override
                 type = "number", -- type of the input - number will not allow non-number characters in the field so only accepts 0-9
                 isRequired = true, -- Optional [accepted values: true | false] but will submit the form if no value is inputted
-                default = 0, -- Default number option, this is optional
             }
         }
     })
@@ -1237,4 +1235,3 @@ CreateThread(function()
         end
     end)
 end)
-
