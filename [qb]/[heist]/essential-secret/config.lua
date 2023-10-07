@@ -37,9 +37,13 @@ Config.LabBossLocation2 = vector4(152.67805480957, -2199.1169433594, 4.688020229
 Config.LabBossScenario = 'WORLD_HUMAN_SMOKING' --the animation the ped does
 Config.LabBossScenario2 = 'WORLD_HUMAN_STAND_IMPATIENT' --the animation the ped does
 
+Config.ResearchItem1 = "lab-files"
+Config.ResearchItem2 = "lab-usb"
+Config.ResearchItem3 = "lab-samples"
 
-Config.PaymentLabMin = 100 
-Config.PaymentLabMax = 200 
+
+Config.PaymentLabMin = 10000 
+Config.PaymentLabMax = 25000 
 Config.LabItemChance = 5 --in % chance you will get on of th items below on completing lab raid
 Config.LabRewards = {  --rare items add as many as you like
     'lockpick', 

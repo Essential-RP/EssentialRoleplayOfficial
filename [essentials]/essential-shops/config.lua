@@ -233,7 +233,7 @@ Config.Products = {
         },
         [11] = {
             name = "boombox",
-            price = 50,
+            price = 2500,
             amount = 50,
             info = {},
             type = "item",

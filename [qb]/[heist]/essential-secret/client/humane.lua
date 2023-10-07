@@ -32,22 +32,55 @@ Citizen.CreateThread(function()
     })
 end)
 
+
+-- Citizen.CreateThread(function()
+--     exports['qb-target']:SpawnPed({
+--         model = Config.LabBossModel2,
+--         coords = Config.LabBossLocation2, 
+--         minusOne = true, --may have to change this if your ped is in the ground
+--         freeze = true, 
+--         invincible = true, 
+--         blockevents = true,
+--         scenario = Config.LabBossScenario2,
+--         target = { 
+--             options = {
+--                 -- {type = "client",event = "essential-secret:LabRaid",icon = "fas fa-comment",label = "Start Lab Raid",},
+--                 {type = "server",event = "essential-secret:RecievePaymentLab",icon = "fas fa-hand",label = "HandOver Research",item = { "lab-usb","lab-samples","lab-files",},},
+--             },
+--           distance = 2.5,
+--         },
+--     })
+-- end)
+
 Citizen.CreateThread(function()
     exports['qb-target']:SpawnPed({
         model = Config.LabBossModel2,
         coords = Config.LabBossLocation2, 
-        minusOne = true, --may have to change this if your ped is in the ground
+        minusOne = true, -- May have to change this if your ped is in the ground
         freeze = true, 
         invincible = true, 
         blockevents = true,
         scenario = Config.LabBossScenario2,
         target = { 
             options = {
-                -- {type = "client",event = "essential-secret:LabRaid",icon = "fas fa-comment",label = "Start Lab Raid",},
-                {type = "server",event = "essential-secret:RecievePaymentLab",icon = "fas fa-hand",label = "HandOver Research",item = { "lab-usb","lab-samples","lab-files",},},
+                {
+                  icon = 'fas fa-mask',
+                  label = 'Handover Research',
+                  action = function()
+                    if QBCore.Functions.HasItem(Config.ResearchItem1) and QBCore.Functions.HasItem(Config.ResearchItem2) and QBCore.Functions.HasItem(Config.ResearchItem3) then
+                        TriggerServerEvent("essential-secret:RecievePaymentLab")
+                    else
+                        QBCore.Functions.Notify("You're missing items, silly!", 'error')
+                    end
+                  end,
+                  canInteract = function()
+                    QBCore.Functions.Notify("You can interact with this NPC.", 'success')
+                    return true -- Always allow interaction to check the target
+                  end
+                }
             },
-          distance = 2.5,
-        },
+            distance = 2.5 -- This is the distance for you to be at for the target to turn blue
+        }
     })
 end)
 
