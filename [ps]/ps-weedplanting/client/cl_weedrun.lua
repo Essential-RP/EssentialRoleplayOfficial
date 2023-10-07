@@ -215,13 +215,31 @@ RegisterNetEvent('ps-weedplanting:client:PackageGoodsReceived', function()
 end)
 
 RegisterNetEvent('ps-weedplanting:client:ClockIn', function()
-    if delivering then return end
-    delivering = true
+    local hasItem = QBCore.Functions.HasItem(Shared.SusPackageItem, 1)
+
+    -- Check if the player has enough of the required item
+    if not hasItem then
+        QBCore.Functions.Notify("You need a package for this!", 'error', 2500)
+        return -- Exit the function if the player doesn't have the required item
+    end
+
+    -- Check if the player is already in the process of delivering
+    if delivering then
+        QBCore.Functions.Notify("You are already delivering!", 'error', 2500)
+        return
+    end
+
+    delivering = true -- Set delivering to true
+
+    -- Trigger a custom notification to the player
     TriggerEvent('qb-phone:client:CustomNotification', _U('weedrun_delivery_title'), _U('weedrun_delivery_waitfornew'), 'fas fa-cannabis', '#00FF00', 8000)
+
+    -- Wait for a random amount of time within the specified range
     Wait(math.random(Shared.DeliveryWaitTime[1], Shared.DeliveryWaitTime[2]))
+
+    -- Create a new delivery spot or initiate the delivery process
     createNewDropOff()
 end)
-
 RegisterNetEvent('ps-weedplanting:client:ClockOut', function()
     if not delivering then return end
     delivering = false
