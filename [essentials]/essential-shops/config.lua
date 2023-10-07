@@ -445,7 +445,7 @@ Config.Products = {
         },
         [6] = {
             name = "weapon_vintagepistol",
-            price = 4000,
+            price = 3500,
             amount = 5,
             info = {},
             type = "item",
@@ -463,13 +463,14 @@ Config.Products = {
         },
         [8] = {
             name = "armor",
-            price = 2500,
-            amount = 2500,
+            price = 750,
+            amount = 250,
             info = {},
             type = "item",
             slot = 8,
             requiresLicense = true
         },
+
     },
     ["casino"] = {
         [1] = {

@@ -44,7 +44,7 @@ Config.DoorSkillcheck = "ps-circle"
 
 -- Set the skill check minigame for disabling the security system
 -- Options: "circle", "ps-circle", "ps-scrambler", "voltlab"
-Config.SecuritySkillcheck = "ps-circle"
+Config.SecuritySkillcheck = "ps-scrambler"
 
 -- Set the skill check minigame for cracking the safe
 -- Options: "circle", "ps-circle", "square"
@@ -95,15 +95,10 @@ Config.Bossman = {
         ["location"] = vector4(340.6393737793, -1260.9625244141, 31.485134124756, 278.95803833008),
         ["scenario"] = "WORLD_HUMAN_DRUG_DEALER",
     },
-    [2] = {
-        ["model"] = "ig_malc",
-        ["location"] = vector4(99.078453063965, 175.33776855469, 103.60643005371, 32.424983978271),
-        ["scenario"] = "WORLD_HUMAN_DRUG_DEALER",
-    }
 }
 
 -- Set the amount of on duty cops required
-Config.MinPolice = 0
+Config.MinPolice = 2
 
 -- If true when the player completes a job they will receive a random sell location
 Config.BuyersEnabled = false
