@@ -27,7 +27,7 @@ elseif Config.Minigame == 'ps-ui' then
         local success = false
         exports['ps-ui']:Circle(function(result)
             success = result
-        end, 1, 10)
+        end, 3, 10)
         return success
     end
 elseif Config.Minigame and Config.Minigame ~= 'none' then

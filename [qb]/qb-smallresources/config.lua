@@ -351,6 +351,7 @@ Config.BlacklistedVehs = {
     [`ambulance`] = true,
     [`tug`] = true,
     [`cargobob`] = true,
+    [`polmav`] = true,
 }
 
 Config.BlacklistedPeds = {

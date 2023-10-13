@@ -279,7 +279,7 @@ RegisterNetEvent('essential-mining:MineOre:Drill', function(data)
 			unloadAnimDict(dict)
 			TriggerServerEvent('essential-mining:MineReward')
 			--Destroy drill bit chances
-			if math.random(1,10) >= 8 then
+			if math.random(1, 50) >= 49 then -- Much lower chance of breaking
 				local breakId = GetSoundId()
 				PlaySoundFromEntity(breakId, "Drill_Pin_Break", PlayerPedId(), "DLC_HEIST_FLEECA_SOUNDSET", 1, 0)
 				toggleItem(0, "drillbit", 1)
@@ -607,7 +607,7 @@ function itemProgress(data)
 	{ animDict = animDictNow, anim = animNow, flags = 8, }, {}, {}, function()
 		TriggerServerEvent('essential-mining:GetItem', data)
 		if data.ret then
-			if math.random(1,10) >= 8 then
+			if math.random(1,20) >= 18 then
 				local breakId = GetSoundId()
 				PlaySoundFromEntity(breakId, "Drill_Pin_Break", PlayerPedId(), "DLC_HEIST_FLEECA_SOUNDSET", 1, 0)
 				toggleItem(false, "drillbit", 1)

@@ -13,13 +13,13 @@ Config.Props = {
 
 -- ## Reset Configs
 Config.ResetOnReboot = false
-Config.ResetTime = 1 -- If Config.ResetOnReboot = false. In minutes
+Config.ResetTime = 2 -- If Config.ResetOnReboot = false. In minutes
 
 -- ## Minigame Configs
 Config.Minigame = 'ps-ui' -- Available options: false, 'ps-ui', 'memorygame', 'ps-ui'
 
 -- ## Time Configs
-Config.ProgressTime = 3 -- In secondes
+Config.ProgressTime = 5 -- In secondes
 
 -- ## Police Configs
 Config.Illegal = false -- True will send an alert using the % on Config.AlertChance
@@ -38,10 +38,11 @@ Config.HurtDamage = {
 
 -- ## Loot table
 Config.CanLootMultiple = true -- Can the player loot multiple items?
-Config.MaxLootItem = math.random(1,2) -- If Config.CanLootMultiple = true. Max items the player can loot
+Config.MaxLootItem = 2 -- If Config.CanLootMultiple = true. Max items the player can loot
 Config.Loottable = {
     [1] = {item = 'packagedweed',     chances = 5,   min = 1,    max = 2},
     [2] = {item = 'steel',              chances = 27,   min = 3,    max = 5},
     [3] = {item = 'weedplant_seedf',   chances = 25,    min = 1,    max = 2},
     [4] = {item = 'plastic',   chances = 40,    min = 4,    max = 5},
+    [5] = {item = 'bsandwich',   chances = 45,    min = 1,    max = 1},
 }
